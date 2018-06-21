@@ -11,6 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// =============================================
+
+Route::group(['namespace'=>'backend'], function(){
+	Route::group(['prefix'=>'admin'], function(){
+		Route::get('/','ViewController@getDashboard');
+		Route::group(['prefix'=>'users'], function(){
+			Route::get('account','ViewController@getUserAccount');
+			Route::get('info','ViewController@getUserInfo');
+			Route::get('guest','ViewController@getUserGuest');
+			Route::group(['prefix'=>'add'], function(){
+				Route::get('/','ViewController@getAddUser');
+				Route::get('post','ViewController@postAddUser');
+			});
+		});
+		Route::group(['prefix'=>'products'], function(){
+			Route::get('show','ViewController@getShowProduct');
+			Route::get('add','ViewController@getAddProduct');
+			Route::get('asd','ViewController@getUserInfo');
+			
+		});
+		
+	});
 });

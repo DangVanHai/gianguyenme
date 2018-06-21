@@ -36,3 +36,8 @@ jQuery(document).ready(function($) {
 
 
 });
+ $(function () {
+      $('input.check').on('change', function () {
+        alert('Rating: ' + $(this).val());
+      });
+    });
