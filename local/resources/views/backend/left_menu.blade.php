@@ -18,10 +18,10 @@
 				<li class="menu-item-has-children dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>BKsensor</a>
 					<ul class="sub-menu children dropdown-menu">
-						<li><i class="fa fa-list"></i><a href="{{asset('admin/users/account')}}">Users</a></li>
-						<li><i class="fa fa-info"></i><a href="{{asset('admin/users/info')}}">Info User</a></li>
-						<li><i class="fa fa-plus-square"></i><a href="{{asset('admin/users/add')}}">Add User</a></li>
+						<li><i class="fa fa-list"></i><a href="{{asset('admin/users/employees')}}">Employees</a></li>
+						<li><i class="fa fa-info"></i><a href="{{asset('admin/users/users')}}">Users</a></li>
 						<li><i class="fa fa-eye"></i><a href="{{asset('admin/users/guest')}}">Guest</a></li>
+						<li><i class="fa fa-plus-square"></i><a href="{{asset('admin/users/add')}}">Add</a></li>
 					</ul>
 				</li>
 				<li class="menu-item-has-children dropdown">

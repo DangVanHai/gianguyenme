@@ -75,7 +75,7 @@
 
 									</td>
 									<td>
-										<input value="" type="hidden" class="rating" data-filled="fa fa-star" data-empty="fa fa-star-o" data-fractions="2"/>
+										<input value="1" type="hidden" class="rating" data-filled="fa fa-star" data-empty="fa fa-star-o" data-fractions="2"/>
 									</td>					        
 									<td>
 										<a href="{{asset('bksensor/admin/product/edit')}}"><span class="fa fa-gavel" style=" text-align: center;  width: 100%;height:100%;"></span></a>
@@ -101,6 +101,7 @@
 
 @section('script')
 <!-- <script src="assets/js/vendor/jquery-2.1.4.min.js"></script> -->
+<script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
 <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
 <script src="assets/js/vendor/bootstrap-rating.min.js"></script>
 <script src="assets/js/vendor/tooltip.min.js"></script>
@@ -123,18 +124,26 @@
 
 
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document).ready(function(e) {
 		$('#bootstrap-data-table-export').DataTable();
+		console.log();
+		$('.rating').rating({
+			stop: 10,
+			step: 2
+		});
 	});
-	function updateCart(quantity,rowId){
-		$.get(
-			'{{asset('shophaituan/cart/update')}}',
-			{quantity:quantity,rowId:rowId},
-			function(){
-				location.reload();
-			}
-			);
-	}
+	
+	// function updateCart(quantity,rowId){
+	// 	$.get(
+	// 		'{{asset('shophaituan/cart/update')}}',
+	// 		{quantity:quantity,rowId:rowId},
+	// 		function(){
+	// 			location.reload();
+	// 		}
+	// 		);
+
+	// }
+
 </script>
 @stop
 <!-- /script -->

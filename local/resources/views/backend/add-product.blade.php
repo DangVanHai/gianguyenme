@@ -162,7 +162,7 @@
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
-<script type="text/javascript" src="{{asset('public/ck/ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript" src="../ck/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 	var editor = CKEDITOR.replace('product-detail',{
 		language:'vi',

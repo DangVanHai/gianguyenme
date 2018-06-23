@@ -38,62 +38,108 @@
 
 <div class="content mt-3">
 	<div class="animated fadeIn">
-		<div class="col-lg-6">
-			<div class="card">
-				<div class="card-header">Add User</div>
-				<div class="card-body card-block">
-					<form action="" method="post" class="">
+		<form method="post" >
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header">Add User</div>
+					<div class="card-body card-block">
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa  fa-male"></i></div>
-								<input type="text" id="username" name="full name" placeholder="your name" class="form-control">
+								<input type="text" id="full_name" required="" name="full_name" placeholder="your full name" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-user"></i></div>
-								<input type="text" id="username" name="username" placeholder="Username" class="form-control">
+								<input type="text" required="" id="username" name="username" placeholder="Username" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-								<input type="email" id="email" name="email" placeholder="Email" class="form-control">
+								<input type="email" id="email" required="" name="email" placeholder="Email" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-								<input type="password" id="password" name="password" placeholder="Password" class="form-control">
+								<input type="password" id="password" required="" name="password" placeholder="Password" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<div class="input-group-addon"><i class="fa  fa-group (alias)"></i></div>
-								<select name="selectSm" id="SelectLm" class="form-control form-control">
-									<option value="0">Please select</option>
-									<option value="1">User</option>
-									<option value="2">Option</option>
-									<option value="3">Option</option>
-									<option value="4">Option</option>
-									<option value="5">Option</option>
+								<div class="input-group-addon"><i class="fa fa-group (alias)"></i></div>
+								<select name="selectSm" required="" id="SelectLm" class="form-control form-control">
+									<option >Please select</option>
+									<option value="1">Admin</option>
+									<option value="2">Employee</option>
+									<option value="3">User</option>
 								</select>
 							</div>
 						</div>
-							<div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
-						</form>
+						<div class="form-actions form-group"><button type="submit" name="submit" class="btn btn-success btn-sm">Submit</button></div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="col-lg-6 employee_info2 employee_info21 employee_info23" style="display:none">
+			<div class="card">
+				<div class="card-header">Add employee infomation</div>
+				<div class="card-body card-block">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><i class="fa fa-phone"></i></div>
+							<input type="text" id="phone" name="phone" placeholder="employee's phone" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><i class="fa fa-home"></i></div>
+							<input type="text" id="address" name="address" placeholder="employee's address" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><i class="fa fa-credit-card"></i></div>
+							<input type="text" id="id_card" name="id_card" placeholder="employee's id card" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><i class="fa  fa-user"></i></div>
+							<input type="file" name="avatar" class="form-control hidden" onchange="changeImg(this)">
+							<span><img id="avatar" class="thumbnail" src="#"></span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-12 col-md-12"><textarea name="employee_detail" id="textarea-input" rows="3" placeholder="note employee..." class="form-control"></textarea></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{csrf_field()}}
+	</form>
+</div>
+</div>
+</div>
+@section('script')
+<script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
+<script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {  
 
-	@section('script')
+      $('#SelectLm').change(function(){
+      $('.employee_info' + $(this).val()).show();
+      $('.employee_info2' + $(this).val()).hide();
+      $('.employee_info2' + $(this).val()).hide();
+      });
+});
 
-	<script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
-	<script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/plugins.js"></script>
-	<script src="assets/js/main.js"></script>
-	@stop
-	<!-- /script -->
-	@stop
+</script>
+@stop
+<!-- /script -->
+@stop

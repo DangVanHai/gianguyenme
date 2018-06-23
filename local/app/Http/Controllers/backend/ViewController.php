@@ -10,7 +10,7 @@ class ViewController extends Controller
     public function getDashboard(){
     	return view('backend.index');
     }
-    public function getUserAccount(){
+    public function getUserEmployees(){
     	return view('backend.users');
     }
     public function getUserInfo(){
