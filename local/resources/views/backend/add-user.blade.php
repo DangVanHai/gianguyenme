@@ -78,6 +78,12 @@
 								</select>
 							</div>
 						</div>
+						<div class="form-group phoneadmin1 phoneadmin12 phoneadmin13" style="display:none">
+							<div class="input-group">
+								<div class="input-group-addon"><i class="fa fa-phone"></i></div>
+								<input type="text" id="phone" name="phoneadmin" placeholder="employee's phone" class="form-control">
+							</div>
+						</div>
 						<div class="form-actions form-group"><button type="submit" name="submit" class="btn btn-success btn-sm">Submit</button></div>
 					</div>
 				</div>
@@ -87,6 +93,12 @@
 			<div class="card">
 				<div class="card-header">Add employee infomation</div>
 				<div class="card-body card-block">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><i class="fa fa-phone"></i></div>
+							<input type="text" id="function" name="function" placeholder="employee's function" class="form-control">
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i class="fa fa-phone"></i></div>
@@ -130,14 +142,15 @@
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
 <script type="text/javascript">
-$(document).ready(function(e) {  
+	$(document).ready(function(e) {  
 
-      $('#SelectLm').change(function(){
-      $('.employee_info' + $(this).val()).show();
-      $('.employee_info2' + $(this).val()).hide();
-      $('.employee_info2' + $(this).val()).hide();
-      });
-});
+		$('#SelectLm').change(function(){
+			$('.employee_info' + $(this).val()).show();
+			$('.employee_info2' + $(this).val()).hide();
+			$('.phoneadmin' + $(this).val()).show();
+			$('.phoneadmin1' + $(this).val()).hide();
+		});
+	});
 
 </script>
 @stop

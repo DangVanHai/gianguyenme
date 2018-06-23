@@ -72,7 +72,6 @@
 									<td>12343</td>
 									<td data-sortable="true">
 										<span class="thumb"><img width="80px" height="150px" src="#" /></span>
-
 									</td>
 									<td>
 										<input value="1" type="hidden" class="rating" data-filled="fa fa-star" data-empty="fa fa-star-o" data-fractions="2"/>

@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','users')
+@section('title','Info-users')
 @section('main')
 @section('header')
 
@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="assets/css/themify-icons.css">
 <link rel="stylesheet" href="assets/css/flag-icon.min.css">
 <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+<link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
 <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
 <link rel="stylesheet" href="assets/scss/style.css">
 
@@ -30,61 +31,54 @@
 			<div class="page-title">
 				<ol class="breadcrumb text-right">
 					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Bksensor</a></li>
-					<li class="active">Account-users</li>
+					<li><a href="#">User</a></li>
+					<li class="active">Info</li>
 				</ol>
 			</div>
 		</div>
 	</div>
 </div>
 <!-- /dashboard -->
+
+
 <div class="content mt-3">
 	<div class="animated fadeIn">
 		<div class="row">
-			<div class="col-lg-12">
+
+			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<strong class="card-title">Table Account</strong>
+						<strong class="card-title">INFO-USERS</strong>
 					</div>
 					<div class="card-body">
-						<table class="table table-dark">
+						<table id="bootstrap-data-table" class="table table-striped table-bordered">
 							<thead>
 								<tr>
-									<th scope="col">#</th>
-									<th scope="col">name</th>
-									<th scope="col">user</th>
-									<th scope="col">Email</th>
+									<th>User Name</th>
+									<th>Phone</th>
+									<th>Organize</th>
+									<th>ID-Company</th>
+									<th>Address</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">1</th>
-									<td>Mark</td>
-									<td>Otto</td>
-									<td>@mdo</td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td>@fat</td>
-								</tr>
-								<tr>
-									<th scope="row">3</th>
-									<td>Larry</td>
-									<td>the Bird</td>
-									<td>@twitter</td>
+									<td>Donna Snider</td>
+									<td>Customer Support</td>
+									<td>New York</td>
+									<td>$112,000</td>
+									<td>$112,000</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-			</div>  
-		</div><!-- .animated -->
-	</div><!-- .content -->
+			</div>
+		</div>
+	</div><!-- .animated -->
+</div><!-- .content -->
 
-
-</div><!-- /#right-panel -->
+<!-- /#right-panel -->
 
 <!-- Right Panel -->
 
@@ -93,6 +87,26 @@
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
+
+
+<script src="assets/js/lib/data-table/datatables.min.js"></script>
+<script src="assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+<script src="assets/js/lib/data-table/dataTables.buttons.min.js"></script>
+<script src="assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+<script src="assets/js/lib/data-table/jszip.min.js"></script>
+<script src="assets/js/lib/data-table/pdfmake.min.js"></script>
+<script src="assets/js/lib/data-table/vfs_fonts.js"></script>
+<script src="assets/js/lib/data-table/buttons.html5.min.js"></script>
+<script src="assets/js/lib/data-table/buttons.print.min.js"></script>
+<script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
+<script src="assets/js/lib/data-table/datatables-init.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#bootstrap-data-table-export').DataTable();
+	} );
+</script>
 @stop
 <!-- /script -->
 @stop

@@ -18,7 +18,10 @@ Route::group(['namespace'=>'backend'], function(){
 		Route::get('/','ViewController@getDashboard');
 
 		Route::group(['prefix'=>'users'], function(){
-			Route::get('employees','ViewController@getUserEmployees');
+			Route::group(['prefix'=>'employees'], function(){
+				Route::get('/','ViewController@getUserEmployees');
+				Route::get('del/{id}','ViewController@getDelEmployees');
+			});
 			Route::get('users','ViewController@getUserInfo');
 			Route::get('guest','ViewController@getUserGuest');
 			Route::group(['prefix'=>'add'], function(){

@@ -13,10 +13,16 @@ class ViewController extends Controller
 		return view('backend.index');
 	}
 	public function getUserEmployees(){
-		return view('backend.users');
+		$user['employees'] = UserModel::Where('level','<=',2)->orderby('user_id','desc')->paginate(10);
+		return view('backend.employees',$user);
+	}
+	public function getDelEmployees(Request $request, $id){
+		$user= UserModel::find($id)->delete();
+		return back();
 	}
 	public function getUserInfo(){
-		return view('backend.info-user');
+		$user['employees'] = UserModel::Where('level',3)->get();
+		return view('backend.users',$user);
 	}
 
 	public function getAddUser(){
@@ -28,15 +34,20 @@ class ViewController extends Controller
 		$user->username = $request->username;
 		$user->email = $request->email;
 		$user->password =Hash::make($request->password);
-		$user->level = $request->level;
+		if($request->level=1){
+		$user->function = "Admin";
+		$user->phone = $request->phoneadmin;
+		}else{
+		$user->function = $request->function;
 		$user->phone = $request->phone;
+		}
+		$user->level = $request->level;
 		$user->address1 = $request->address;
 		$user->id_card = $request->id_card;
 		$user->avatar = $request->avatar;
 		$user->employee_detail = $request->employee_detail;
 		$user->save();
-		dd('thanh cong');
-		return redirect()->intended('');
+		return redirect()->intended('admin')->withInput()->with('adduser','you have added user , chose member to check');
 	}
 
 	public function getUserGuest(){

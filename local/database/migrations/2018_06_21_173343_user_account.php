@@ -20,6 +20,7 @@ class UserAccount extends Migration
             $table->string('password');
             $table->tinyInteger('level');
             $table->string('phone')->nullable();
+            $table->string('function')->nullable();
             $table->string('avatar')->nullable();
             $table->string('id_card')->nullable();
             $table->string('organize')->nullable();

@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','Info-users')
+@section('title','users')
 @section('main')
 @section('header')
 
@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="assets/css/themify-icons.css">
 <link rel="stylesheet" href="assets/css/flag-icon.min.css">
 <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-<link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
 <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
 <link rel="stylesheet" href="assets/scss/style.css">
 
@@ -31,54 +30,60 @@
 			<div class="page-title">
 				<ol class="breadcrumb text-right">
 					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">User</a></li>
-					<li class="active">Info</li>
+					<li><a href="#">Bksensor</a></li>
+					<li class="active">Employees</li>
 				</ol>
 			</div>
 		</div>
 	</div>
 </div>
 <!-- /dashboard -->
-
-
 <div class="content mt-3">
 	<div class="animated fadeIn">
 		<div class="row">
-
-			<div class="col-md-12">
+			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-header">
-						<strong class="card-title">INFO-USERS</strong>
+						<strong class="card-title">Table Account</strong>
 					</div>
 					<div class="card-body">
-						<table id="bootstrap-data-table" class="table table-striped table-bordered">
+						<table class="table table-dark">
 							<thead>
 								<tr>
-									<th>User Name</th>
-									<th>Phone</th>
-									<th>Organize</th>
-									<th>ID-Company</th>
-									<th>Address</th>
+									<th scope="col">#</th>
+									<th scope="col">name</th>
+									<th scope="col">phone</th>
+									<th scope="col">function</th>
+									<th scope="col">check</th>
+									<th scope="col">Del</th>
 								</tr>
 							</thead>
 							<tbody>
+								@foreach($employees as $employee)
 								<tr>
-									<td>Donna Snider</td>
-									<td>Customer Support</td>
-									<td>New York</td>
-									<td>$112,000</td>
-									<td>$112,000</td>
+									<th scope="row">1</th>
+									<td><a href="#">{{$employee->full_name}}</a></td>
+									<td>{{$employee->phone}}</td>
+									<td>{{$employee->function}}</td>
+									<td>
+										<a href="{{asset('admin/users/employees/show/'.$employee->user_id)}}"><span class="fa fa-eye" style=" text-align: center;  width: 100%;height:100%;"></span></a>
+									</td>
+									<td>
+										<a  href="{{asset('admin/users/employees/del/'.$employee->user_id)}}"><span  class="fa fa-times" style=" text-align: center;  width: 100%;height:100%;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"></span></a>
+									</td>
 								</tr>
+								@endforeach
 							</tbody>
 						</table>
+						{{$employees->links()}}
 					</div>
 				</div>
-			</div>
-		</div>
-	</div><!-- .animated -->
-</div><!-- .content -->
+			</div>  
+		</div><!-- .animated -->
+	</div><!-- .content -->
 
-<!-- /#right-panel -->
+
+</div><!-- /#right-panel -->
 
 <!-- Right Panel -->
 
@@ -87,26 +92,6 @@
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
-
-
-<script src="assets/js/lib/data-table/datatables.min.js"></script>
-<script src="assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
-<script src="assets/js/lib/data-table/dataTables.buttons.min.js"></script>
-<script src="assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
-<script src="assets/js/lib/data-table/jszip.min.js"></script>
-<script src="assets/js/lib/data-table/pdfmake.min.js"></script>
-<script src="assets/js/lib/data-table/vfs_fonts.js"></script>
-<script src="assets/js/lib/data-table/buttons.html5.min.js"></script>
-<script src="assets/js/lib/data-table/buttons.print.min.js"></script>
-<script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
-<script src="assets/js/lib/data-table/datatables-init.js"></script>
-
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#bootstrap-data-table-export').DataTable();
-	} );
-</script>
 @stop
 <!-- /script -->
 @stop

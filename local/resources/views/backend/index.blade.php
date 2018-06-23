@@ -34,18 +34,7 @@
         </div>
     </div>
 </div>
-<div class="content mt-3">
-
-    <div class="col-sm-12">
-        <div class="alert  alert-success alert-dismissible fade show" role="alert">
-          <span class="badge badge-pill badge-success">Success</span> You successfully accept admin page to manager Bksensor website.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-</div>
-
-
+@include('backend.errors.errors')
 <div class="col-sm-6 col-lg-3">
     <div class="card text-white bg-flat-color-3">
         <div class="card-body pb-0">
