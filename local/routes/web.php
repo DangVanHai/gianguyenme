@@ -16,13 +16,14 @@
 Route::group(['namespace'=>'backend'], function(){
 	Route::group(['prefix'=>'admin'], function(){
 		Route::get('/','ViewController@getDashboard');
+
 		Route::group(['prefix'=>'users'], function(){
 			Route::get('employees','ViewController@getUserEmployees');
 			Route::get('users','ViewController@getUserInfo');
 			Route::get('guest','ViewController@getUserGuest');
 			Route::group(['prefix'=>'add'], function(){
 				Route::get('/','ViewController@getAddUser');
-				Route::get('post','ViewController@postAddUser');
+				Route::post('/','ViewController@postAddUser');
 			});
 		});
 		Route::group(['prefix'=>'products'], function(){

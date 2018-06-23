@@ -35,7 +35,7 @@
 		</div>
 	</div>
 </div>
-
+@include('backend.errors.errors')
 <div class="content mt-3">
 	<div class="animated fadeIn">
 		<form method="post" >
@@ -70,8 +70,8 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-group (alias)"></i></div>
-								<select name="selectSm" required="" id="SelectLm" class="form-control form-control">
-									<option >Please select</option>
+								<select name="level" required="" id="SelectLm" class="form-control form-control">
+									<option value="">Please select</option>
 									<option value="1">Admin</option>
 									<option value="2">Employee</option>
 									<option value="3">User</option>
