@@ -44,7 +44,14 @@
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-header">
-						<strong class="card-title">Table Account</strong>
+						<div class="row">
+							<div class="col-md-2">
+								<strong class="card-title ">Table Account</strong>
+							</div>
+							<div class="col-md-2 ml-auto">
+								<button type="button" name="submit" class="btn btn-outline-primary btn-sm" ><a href="{{asset('admin/users/add')}}">Add User</a></button>
+							</div>
+						</div>
 					</div>
 					<div class="card-body">
 						<table class="table table-dark">

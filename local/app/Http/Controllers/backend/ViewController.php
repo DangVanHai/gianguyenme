@@ -20,6 +20,10 @@ class ViewController extends Controller
 		$user= UserModel::find($id)->delete();
 		return back();
 	}
+	public function getShowEmployees(Request $request, $id){
+		$employee['show']= UserModel::find($id);
+		return view('backend.show-employee',$employee);
+	}
 	public function getUserInfo(){
 		$user['employees'] = UserModel::Where('level',3)->get();
 		return view('backend.users',$user);
@@ -29,23 +33,28 @@ class ViewController extends Controller
 		return view('backend.add-user');
 	}
 	public function postAddUser(AddUserRequest $request){
+
 		$user = new UserModel;
 		$user->full_name = $request->full_name;
 		$user->username = $request->username;
 		$user->email = $request->email;
 		$user->password =Hash::make($request->password);
-		if($request->level=1){
-		$user->function = "Admin";
-		$user->phone = $request->phoneadmin;
+		if($request->level==1){
+			$user->function = "Admin";
+			$user->phone = $request->phoneadmin;
 		}else{
-		$user->function = $request->function;
-		$user->phone = $request->phone;
+			$user->function = $request->function;
+			$user->phone = $request->phone;
 		}
 		$user->level = $request->level;
 		$user->address1 = $request->address;
 		$user->id_card = $request->id_card;
-		$user->avatar = $request->avatar;
 		$user->employee_detail = $request->employee_detail;
+		if ($request->avatar!=NULL) {
+			$filename = $request->avatar->getClientOriginalName();
+			$user->avatar = $filename;
+			$request->avatar->storeAs('avatar',$filename);
+		}
 		$user->save();
 		return redirect()->intended('admin')->withInput()->with('adduser','you have added user , chose member to check');
 	}

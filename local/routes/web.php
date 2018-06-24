@@ -21,6 +21,7 @@ Route::group(['namespace'=>'backend'], function(){
 			Route::group(['prefix'=>'employees'], function(){
 				Route::get('/','ViewController@getUserEmployees');
 				Route::get('del/{id}','ViewController@getDelEmployees');
+				Route::get('show/{id}','ViewController@getShowEmployees');
 			});
 			Route::get('users','ViewController@getUserInfo');
 			Route::get('guest','ViewController@getUserGuest');
