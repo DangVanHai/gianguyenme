@@ -56,10 +56,10 @@
 				<h3 class="menu-title">Category</h3><!-- /.menu-title -->
 
 				<li class="menu-item-has-children dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Selling</a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>manager</a>
 					<ul class="sub-menu children dropdown-menu">
 						<li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">All Category</a></li>
-						<li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Add Category</a></li>
+						<li><i class="menu-icon ti-themify-logo"></i><a href="{{asset('admin/categorys/add')}}">Add Category</a></li>
 					</ul>
 				</li>
 				<li>

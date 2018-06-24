@@ -56,7 +56,12 @@ class ViewController extends Controller
 			$request->avatar->move('public/images/avatar',$filename);
 		}
 		$user->save();
-		return redirect()->intended('admin')->withInput()->with('adduser','you have added user , chose member to check');
+		if ($request->level==1||$request->level==2) {
+			return redirect()->intended('admin/users/employees')->withInput()->with('adduser','you have added user');
+		}else{
+			return redirect()->intended('admin/users/users')->withInput()->with('adduser','you have added guest');
+		}
+		
 	}
 
 	public function getUserGuest(){

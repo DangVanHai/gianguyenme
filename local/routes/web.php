@@ -36,6 +36,16 @@ Route::group(['namespace'=>'backend'], function(){
 			Route::get('asd','ViewController@getAddProduct');
 			
 		});
+		Route::group(['prefix'=>'categorys'], function(){
+			Route::group(['prefix'=>'add'], function(){
+				Route::get('/','CategoryController@getAddCategory');
+				Route::post('/','CategoryController@postAddCategory');
+			});
+
+			Route::get('show','CategoryController@getShowCategory');
+			Route::get('edit','CategoryController@getAddProduct');
+			
+		});
 		
 	});
 });
