@@ -50,10 +50,10 @@ class ViewController extends Controller
 		$user->address1 = $request->address;
 		$user->id_card = $request->id_card;
 		$user->employee_detail = $request->employee_detail;
-		if ($request->avatar!=NULL) {
+		if ($request->hasFile('avatar')) {
 			$filename = $request->avatar->getClientOriginalName();
 			$user->avatar = $filename;
-			$request->avatar->storeAs('avatar',$filename);
+			$request->avatar->move('public/images/avatar',$filename);
 		}
 		$user->save();
 		return redirect()->intended('admin')->withInput()->with('adduser','you have added user , chose member to check');

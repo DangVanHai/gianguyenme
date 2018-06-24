@@ -62,7 +62,11 @@
 								<input type="email" id="email" disabled=""  name="email" value="{{$employee->email}}" class="form-control">
 							</div>
 						</div>
-						<div class="form-actions form-group"><button type="button" name="submit" class="btn btn-outline-danger btn-sm" ><a href="{{asset('admin/users/edit/'.$employee->user_id)}}">Edit</a></button></div>
+						<div class="form-actions form-group">
+							<div class="row">
+								<button type="button" name="submit" class="btn btn-outline-danger btn-sm col" ><a href="{{asset('admin/users/edit/'.$employee->user_id)}}">Edit</a></button><button type="button" name="submit" class="btn btn-outline-success btn-sm col" ><a href="{{asset('admin/users/employees')}}">Return</a></button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -96,8 +100,8 @@
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<div class="input-group-addon"><i class="fa fa-user"></i></div>
-								<span><img id="avatar" class="thumbnail" src="{{asset('local/stogare/avatar/'.$employee->avatar)}}"></span>
+								<div class="input-group-addon"><i class="fa">Avatar</i></div>
+								<span><img id="avatar" class="thumbnail" src="{{asset('public/images/avatar/'.$employee->avatar)}}"></span>
 							</div>
 						</div>
 						<div class="row form-group">

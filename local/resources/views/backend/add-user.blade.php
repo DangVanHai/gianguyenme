@@ -38,7 +38,7 @@
 @include('backend.errors.errors')
 <div class="content mt-3">
 	<div class="animated fadeIn">
-		<form method="post" >
+		<form method="post" enctype="multipart/form-data">
 			<div class="col-lg-6">
 				<div class="card">
 					<div class="card-header">Add User</div>
