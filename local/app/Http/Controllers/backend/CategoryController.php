@@ -19,7 +19,14 @@ class CategoryController extends Controller
 		$cate->cate_main = $request->cate_main;
 		$cate->cate_level = $request->cate_level;
 		$cate->save();
-		dd('thanhcong');
 		return redirect()->intended('admin/categories/show');
+	}
+	public function getShowCategory(){
+		$cate['categories'] = CaloteryModel::orderby('cate_id','desc')->paginate(10);
+		return view('backend.show-category',$cate);
+	}
+	public function getDelCategory(Request $request, $id){
+		$cate= CaloteryModel::find($id)->delete();
+		return back();
 	}
 }

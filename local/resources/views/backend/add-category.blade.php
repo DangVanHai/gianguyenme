@@ -28,7 +28,7 @@
 			<div class="page-title">
 				<ol class="breadcrumb text-right">
 					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Category</a></li>
+					<li><a href="{{asset('admin/categories/show')}}">Category</a></li>
 					<li class="active">Add</li>
 				</ol>
 			</div>

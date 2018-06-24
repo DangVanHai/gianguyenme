@@ -31,7 +31,7 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'cate_name.unique'=>'Category đã tồn tại',
+            'cate_name.unique'=>'Category has exit',
             'cate_main.required'=>'please! choise level category ',
         ];
     }

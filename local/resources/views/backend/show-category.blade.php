@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','Empoyees')
+@section('title','Categories')
 @section('main')
 @section('header')
 
@@ -30,8 +30,8 @@
 			<div class="page-title">
 				<ol class="breadcrumb text-right">
 					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Bksensor</a></li>
-					<li class="active">Employees</li>
+					<li><a href="#">Admin</a></li>
+					<li class="active">Categories</li>
 				</ol>
 			</div>
 		</div>
@@ -46,10 +46,10 @@
 					<div class="card-header">
 						<div class="row">
 							<div class="col-md-2">
-								<strong class="card-title ">Table Account</strong>
+								<strong class="card-title ">Table Categories</strong>
 							</div>
 							<div class="col-md-2 ml-auto">
-								<button type="button" name="submit" class="btn btn-outline-primary btn-sm" ><a href="{{asset('admin/users/add')}}">Add User</a></button>
+								<button type="button" name="submit" class="btn btn-outline-primary btn-sm" ><a href="{{asset('admin/categories/add')}}">Add cate</a></button>
 							</div>
 						</div>
 					</div>
@@ -59,30 +59,28 @@
 								<tr>
 									<th scope="col">#</th>
 									<th scope="col">name</th>
-									<th scope="col">phone</th>
 									<th scope="col">function</th>
-									<th scope="col">check</th>
+									<th scope="col">Edit</th>
 									<th scope="col">Del</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($employees as $employee)
+								@foreach($categories as $category)
 								<tr>
-									<th scope="row">{{$employee->user_id}}</th>
-									<td><a href="#">{{$employee->full_name}}</a></td>
-									<td>{{$employee->phone}}</td>
-									<td>{{$employee->function}}</td>
+									<th scope="row">{{$category->cate_id}}</th>
+									<td><a href="#">{{$category->cate_name}}</a></td>
+									<td>{{$category->cate_main}}</td>
 									<td>
-										<a href="{{asset('admin/users/employees/show/'.$employee->user_id)}}"><span class="fa fa-eye" style=" text-align: center;  width: 100%;height:100%;"></span></a>
+										<a href="{{asset('admin/categories/edit/'.$category->cate_id)}}"><span class="fa fa-eye"></span></a>
 									</td>
 									<td>
-										<a  href="{{asset('admin/users/employees/del/'.$employee->user_id)}}"><span  class="fa fa-times" style=" text-align: center;  width: 100%;height:100%;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"></span></a>
+										<a  href="{{asset('admin/categories/del/'.$category->cate_id)}}"><span  class="fa fa-times"  onclick="return confirm('Bạn có chắc chắn muốn xóa?')"></span></a>
 									</td>
 								</tr>
 								@endforeach
 							</tbody>
 						</table>
-						{{$employees->links()}}
+						{{$categories->links()}}
 					</div>
 				</div>
 			</div>  
