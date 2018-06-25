@@ -20,6 +20,17 @@
 .fa-times{
   color: red; 
 }
+.fa-shopping-cart{
+  color: yellow; 
+}
+.prod_pe{
+  size: 11px;
+  font-size: 11px;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
+
 
 /* Bootstrap */
 

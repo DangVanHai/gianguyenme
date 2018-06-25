@@ -33,11 +33,6 @@ jQuery(document).ready(function($) {
 	// 	$('.user-menu').parent().removeClass('open');
 	// 	$('.user-menu').parent().toggleClass('open');
 	// });
-
+		
 
 });
- $(function () {
-      $('input.check').on('change', function () {
-        alert('Rating: ' + $(this).val());
-      });
-    });

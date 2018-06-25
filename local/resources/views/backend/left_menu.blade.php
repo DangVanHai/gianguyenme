@@ -36,7 +36,7 @@
 				<li class="menu-item-has-children dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-sitemap"></i>manager</a>
 					<ul class="sub-menu children dropdown-menu">
-						<li><i class="fa fa-list-ol"></i><a href="{{asset('admin/products/show')}}">List of Product</a></li>
+						<li><i class="fa fa-list-ol"></i><a href="{{asset('admin/products')}}">List of Product</a></li>
 						<li><i class="fa fa-plus-circle"></i><a href="{{asset('admin/products/add')}}">Add Product</a></li>
 					</ul>
 				</li>

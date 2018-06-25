@@ -67,10 +67,5 @@ class ViewController extends Controller
 	public function getUserGuest(){
 		return view('backend.guest');
 	}
-	public function getShowProduct(){
-		return view('backend.show-product');
-	}
-	public function getAddProduct(){
-		return view('backend.add-product');
-	}
+	
 }

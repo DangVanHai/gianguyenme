@@ -30,12 +30,7 @@ Route::group(['namespace'=>'backend'], function(){
 				Route::post('/','ViewController@postAddUser');
 			});
 		});
-		Route::group(['prefix'=>'products'], function(){
-			Route::get('show','ViewController@getShowProduct');
-			Route::get('add','ViewController@getAddProduct');
-			Route::get('asd','ViewController@getAddProduct');
-			
-		});
+		
 		Route::group(['prefix'=>'categories'], function(){
 			Route::group(['prefix'=>'add'], function(){
 				Route::get('/','CategoryController@getAddCategory');
@@ -49,6 +44,18 @@ Route::group(['namespace'=>'backend'], function(){
 				Route::post('/','CategoryController@postEditProduct');
 			});
 			
+		});
+		Route::group(['prefix'=>'products'], function(){
+			Route::get('/','ProductController@getShowProduct');
+			Route::get('del/{id}','ProductController@getDelProduct');
+			Route::group(['prefix'=>'add'], function(){
+				Route::get('/','ProductController@getAddProduct');
+				Route::post('/','ProductController@postAddProduct');
+			});
+			Route::group(['prefix'=>'edit'], function(){
+				Route::get('/','ProductController@getEditProduct');
+				Route::post('/','ProductController@postEditProduct');
+			});
 		});
 		
 	});
