@@ -11,8 +11,7 @@
 |
 */
 
-// =============================================
-
+	// +++++++++++++++++++++++++start backend++++++++++++++++++++++++++++
 Route::group(['namespace'=>'backend'], function(){
 	Route::group(['prefix'=>'admin'], function(){
 		Route::get('/','ViewController@getDashboard');
@@ -57,6 +56,17 @@ Route::group(['namespace'=>'backend'], function(){
 				Route::post('/','ProductController@postEditProduct');
 			});
 		});
-		
 	});
 });
+	// ++++++++++++++++++++++/end backend+++++++
+	// +++++++++++++++++++++++++start frontend++++++++++++++++++++++++++++
+
+Route::group(['namespace'=>'frontend'], function(){
+	Route::get('/','FronEndViewController@getBksensor');
+
+	Route::group(['prefix'=>'abc'], function(){
+
+	});
+});
+
+	// ++++++++++++++++++++++/end frontend+++++++
