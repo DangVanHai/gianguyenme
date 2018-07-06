@@ -15,7 +15,7 @@ class ProductModel extends Model
 	protected  $guarded = [];
 	
 	public function category(){
-    	return $this->hasmany('App\model\backend\CaloteryModel','prod_cate');//thuan
+    	return $this->belongsTo('App\model\backend\CaloteryModel','prod_cate');//thuan
 
     }
 }

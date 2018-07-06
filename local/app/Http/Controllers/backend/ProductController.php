@@ -10,7 +10,7 @@ use App\model\backend\CaloteryModel;
 class ProductController extends Controller
 {
     public function getAddProduct(){
-		$cate['categories'] = CaloteryModel::Where('cate_main','children')->orderby('cate_id','desc')->get();
+		$cate['categories'] = CaloteryModel::Where('cate_main','children')->orWhere('cate_main','parent')->orderby('cate_id','desc')->get();
 		return view('backend.add-product',$cate);
 	}
 	public function postAddProduct(ProductRequest $request){
@@ -28,7 +28,7 @@ class ProductController extends Controller
 		$prods->prod_partner_info = $request->prod_partner_info;
 		$prods->prod_partner_level = $request->prod_partner_level;
 		$prods->prod_detail = $request->prod_detail;
-		$prods->prod_slug = str_slug('$request->prod_name');
+		$prods->prod_slug = str_slug($request->prod_name);
 		if ($request->hasFile('prod_img')) {
 			$filename1 = $request->prod_img->getClientOriginalName();
 			$prods->prod_img = $filename1;

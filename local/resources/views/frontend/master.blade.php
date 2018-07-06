@@ -7,6 +7,8 @@
 	<base href="{{asset('public/frontend')}}/">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	@yield('header')
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+
 
 	<title>BKsensor | @yield('title')</title>
 
@@ -20,13 +22,13 @@
 		<div id="top-header">
 			<div class="container">
 				<ul class="header-links pull-left">
-					<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-					<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-					<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+					<li><a href="#"><i class="fa fa-phone"></i> +091-87-68-74</a></li>
+					<li><a href="#"><i class="fa fa-envelope-o"></i> bksensors@email.com</a></li>
+					<li><a href="#"><i class="fa fa-map-marker"></i> 49 ThuyLinh HaNoi</a></li>
 				</ul>
 				<ul class="header-links pull-right">
-					<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-					<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+					<li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
+					<li><a href="#"><i class="fa fa-user-o"></i> Tài Khoản</a></li>
 				</ul>
 			</div>
 		</div>
@@ -41,8 +43,8 @@
 					<!-- LOGO -->
 					<div class="col-md-3">
 						<div class="header-logo">
-							<a href="#" class="logo">
-								<img src="./img/logo.png" alt="">
+							<a href="{{asset('/')}}" class="logo">
+								<img src="./img/logo.png" alt="bksensors-logo">
 							</a>
 						</div>
 					</div>
@@ -51,14 +53,15 @@
 					<!-- SEARCH BAR -->
 					<div class="col-md-6">
 						<div class="header-search">
-							<form>
-								<select class="input-select">
-									<option value="0">All Categories</option>
-									<option value="1">Category 01</option>
-									<option value="1">Category 02</option>
+							<form method="get" action="{{asset('')}}">
+								<select name="cate" class="input-select">
+									<option value="0">Tất cả</option>
+									@foreach($cate_parents as $cate_parent)
+									<option value="{{$cate_parent->cate_id}}">{{$cate_parent->cate_name}}</option>
+									@endforeach
 								</select>
-								<input class="input" placeholder="Search here">
-								<button class="search-btn">Search</button>
+								<input class="input" placeholder="Search here" name="search"  value="">
+								<button type="submit" name="submit" class="search-btn">Kìm Kiếm</button>
 							</form>
 						</div>
 					</div>
@@ -67,21 +70,11 @@
 					<!-- ACCOUNT -->
 					<div class="col-md-3 clearfix">
 						<div class="header-ctn">
-							<!-- Wishlist -->
-							<div>
-								<a href="#">
-									<i class="fa fa-heart-o"></i>
-									<span>Your Wishlist</span>
-									<div class="qty">2</div>
-								</a>
-							</div>
-							<!-- /Wishlist -->
-
 							<!-- Cart -->
 							<div class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 									<i class="fa fa-shopping-cart"></i>
-									<span>Your Cart</span>
+									<span>Báo Giá</span>
 									<div class="qty">3</div>
 								</a>
 								<div class="cart-dropdown">
@@ -139,22 +132,27 @@
 		<!-- /MAIN HEADER -->
 	</header>
 	<!-- /HEADER -->
-
 	<!-- NAVIGATION -->
 	<nav id="navigation">
 		<!-- container -->
 		<div class="container">
 			<!-- responsive-nav -->
-			<div id="responsive-nav">
+			<div id="responsive-nav" class="menu">
 				<!-- NAV -->
 				<ul class="main-nav nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Hot Deals</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Laptops</a></li>
-					<li><a href="#">Smartphones</a></li>
-					<li><a href="#">Cameras</a></li>
-					<li><a href="#">Accessories</a></li>
+					@foreach($cate_parents as $cate_parent)
+					<li><a href="{{asset('/'.$cate_parent->cate_name)}}">{{$cate_parent->cate_name}}</a>
+						@if($cate_parent->cate_main =="parents")
+						<ul>
+							@foreach($cate_childrens as $cate_children)
+							@if($cate_children->cate_level == $cate_parent->cate_id)
+							<li><a href="{{asset('/'.$cate_children->cate_name)}}">{{$cate_children->cate_name}}</a></li>
+							@endif
+							@endforeach
+						</ul>
+						@endif
+					</li>
+					@endforeach
 				</ul>
 				<!-- /NAV -->
 			</div>
@@ -172,10 +170,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="newsletter">
-						<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+						<p>Đăng ký để nhận <strong>BẢN TIN</strong></p>
 						<form>
-							<input class="input" type="email" placeholder="Enter Your Email">
-							<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							<input class="input" type="email" placeholder="Nhập Email Của Bạn">
+							<button class="newsletter-btn"><i class="fa fa-envelope"></i> ĐĂNG KÝ</button>
 						</form>
 						<ul class="newsletter-follow">
 							<li>
@@ -211,24 +209,22 @@
 					<div class="col-md-3 col-xs-6">
 						<div class="footer">
 							<h3 class="footer-title">About Us</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+							<p>BKsensor công ty thương mại chuyên cung cấp các thiết bị công nghệ cao.</p>
 							<ul class="footer-links">
-								<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-								<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-								<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+								<li><a href="#"><i class="fa fa-map-marker"></i>49 ThuyLinh HaNoi</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i>+091-87-68-74</a></li>
+								<li><a href="#"><i class="fa fa-envelope-o"></i>bksensors@email.com</a></li>
 							</ul>
 						</div>
 					</div>
 
 					<div class="col-md-3 col-xs-6">
 						<div class="footer">
-							<h3 class="footer-title">Categories</h3>
+							<h3 class="footer-title">Danh Mục</h3>
 							<ul class="footer-links">
-								<li><a href="#">Hot deals</a></li>
-								<li><a href="#">Laptops</a></li>
-								<li><a href="#">Smartphones</a></li>
-								<li><a href="#">Cameras</a></li>
-								<li><a href="#">Accessories</a></li>
+								@foreach($cate_parents as $cate_parent)
+								<li><a href="{{$cate_parent->cate_name}}">{{$cate_parent->cate_name}}</a></li>
+								@endforeach
 							</ul>
 						</div>
 					</div>
@@ -237,26 +233,25 @@
 
 					<div class="col-md-3 col-xs-6">
 						<div class="footer">
-							<h3 class="footer-title">Information</h3>
+							<h3 class="footer-title">Thông Tin</h3>
 							<ul class="footer-links">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Orders and Returns</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
+								<li><a href="#">Chúng Tôi</a></li>
+								<li><a href="#">Liên Hệ</a></li>
+								<li><a href="#">Bảo Hành</a></li>
+								<li><a href="#">Đợn Đặt Hàng và Hòn Trả</a></li>
+								<li><a href="#">Điều Khoản Và Điều Kiện</a></li>
 							</ul>
 						</div>
 					</div>
 
 					<div class="col-md-3 col-xs-6">
 						<div class="footer">
-							<h3 class="footer-title">Service</h3>
+							<h3 class="footer-title">Dịch Vụ</h3>
 							<ul class="footer-links">
-								<li><a href="#">My Account</a></li>
-								<li><a href="#">View Cart</a></li>
-								<li><a href="#">Wishlist</a></li>
-								<li><a href="#">Track My Order</a></li>
-								<li><a href="#">Help</a></li>
+								<li><a href="#">Tài Khoản Của bạn</a></li>
+								<li><a href="#">Xem Báo Giá</a></li>
+								<li><a href="#">Bảng Tin</a></li>
+								<li><a href="#">Trợ Giúp</a></li>
 							</ul>
 						</div>
 					</div>
@@ -283,7 +278,7 @@
 						</ul>
 						<span class="copyright">
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">BKsensor</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</span>
 					</div>
@@ -297,6 +292,20 @@
 	<!-- /FOOTER -->
 
 	<!-- jQuery Plugins -->
+
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/superfish.js"></script>
+	<script type="text/javascript">
+
+		$('.menu > ul').superfish({ 
+			delay:       100,                           
+			animation:   {opacity:'show', height:'show'}, 
+			speed:       'fast',
+			arrowClass: false,
+			autoArrows:  true
+		});
+	</script>
 	@yield('script')
+	
 </body>
 </html>

@@ -63,10 +63,9 @@ Route::group(['namespace'=>'backend'], function(){
 
 Route::group(['namespace'=>'frontend'], function(){
 	Route::get('/','FronEndViewController@getBksensor');
+	Route::get('chitietsanpham/{id}/{slug}.html','FronEndViewController@getProductDetail');
+	Route::get('{cate}/{search}','FronEndViewController@getCateProduct');
 
-	Route::group(['prefix'=>'abc'], function(){
-
-	});
 });
 
 	// ++++++++++++++++++++++/end frontend+++++++

@@ -54,7 +54,7 @@
 							<div class="col col-md-9">
 								<div class="form-check-inline form-check">
 									<label for="inline-radio1" class="form-check-label ">
-										<input type="radio" id="inline-radio1" name="cate_main" value="parents" class="form-check-input">parents
+										<input type="radio" id="inline-radio1" name="cate_main" value="parent" class="form-check-input">parent
 									</label>
 									<label for="inline-radio2" class="form-check-label ">
 										<input type="radio" id="inline-radio2" name="cate_main" value="children" class="form-check-input">children

@@ -16,9 +16,10 @@
 
 <!-- Font Awesome Icon -->
 <link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="../backend/assets/css/bootstrap-rating.css">
+
 
 <!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="css/style.css"/>
 
 @stop
 
@@ -32,11 +33,11 @@
 			<div class="col-md-4 col-xs-6">
 				<div class="shop">
 					<div class="shop-img">
-						<img src="./img/shop01.png" alt="">
+						<img src="./img/news.png" alt="">
 					</div>
 					<div class="shop-body">
-						<h3>Laptop<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>Bảng Tin<br>Công Nghệ SmartHome</h3>
+						<a href="#" class="cta-btn">Đi Tới <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -46,11 +47,11 @@
 			<div class="col-md-4 col-xs-6">
 				<div class="shop">
 					<div class="shop-img">
-						<img src="./img/shop03.png" alt="">
+						<img src="./img/project.png" alt=" project smart home">
 					</div>
 					<div class="shop-body">
-						<h3>Accessories<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>Dự Án<br> Của BKsensor</h3>
+						<a href="#" class="cta-btn">Đi Tới <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -60,11 +61,11 @@
 			<div class="col-md-4 col-xs-6">
 				<div class="shop">
 					<div class="shop-img">
-						<img src="./img/shop02.png" alt="">
+						<img src="./img/collect.png" alt="sensor Smart home">
 					</div>
 					<div class="shop-body">
-						<h3>Cameras<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>Smart Home<br>Bộ sưu tập</h3>
+						<a href="#" class="cta-btn">Đi Tới <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -76,7 +77,7 @@
 </div>
 <!-- /SECTION -->
 
-<!-- SECTION -->
+<!-- SECTION Product new-->
 <div class="section">
 	<!-- container -->
 	<div class="container">
@@ -86,13 +87,12 @@
 			<!-- section title -->
 			<div class="col-md-12">
 				<div class="section-title">
-					<h3 class="title">New Products</h3>
+					<h3 class="title">Sản Phẩm Mới</h3>
 					<div class="section-nav">
-						<ul class="section-tab-nav tab-nav">
-							<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-							<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-							<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-							<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
+						<ul class="section-tab-nav tab-nav" id="myTab">
+							@foreach($_cate_new as $key => $cate_new)
+							<li @if($key == 0) class="active" @endif><a data-toggle="tab" href="#N{{$cate_new->cate_name}}">{{$cate_new->cate_name}}</a></li>
+							@endforeach
 						</ul>
 					</div>
 				</div>
@@ -104,155 +104,52 @@
 				<div class="row">
 					<div class="products-tabs">
 						<!-- tab -->
-						<div id="tab1" class="tab-pane active">
-							<div class="products-slick" data-nav="#slick-nav-1">
+						@foreach($_cate_new as $key=> $cate_new)
+						<div id="N{{$cate_new->cate_name}}" class="tab-pane @if($key == 0) active @endif">
+							<div class="products-slick" data-nav="#slick-nav-5{{$key}}">
+								@foreach($_prods_new as $prods_new)
+								@if($cate_new->cate_id == $prods_new->prod_cate)
 								<!-- product -->
 								<div class="product">
-									<div class="product-img">
-										<img src="./img/product01.png" alt="">
-										<div class="product-label">
-											<span class="sale">-30%</span>
-											<span class="new">NEW</span>
+									<a href="{{asset('chitietsanpham/'.$prods_new->prod_id.'/'.$prods_new->prod_slug.'.html')}}">
+										<div class="product-img">
+											<img src="../images/products/{{$prods_new->prod_img}}" alt="{{$prods_new->prod_img}}">
+											<div class="product-label">
+												<!-- <span class="sale">-30%</span> -->
+												<span class="new">NEW</span>
+											</div>
 										</div>
-									</div>
+									</a>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<p class="product-category">{{$cate_new->cate_name}}</p>
+										<h3 class="product-name"><a href="{{asset('chitietsanpham/'.$prods_new->prod_id.'/'.$prods_new->prod_slug.'.html')}}">{{$prods_new->prod_name}}</a></h3>
+										<h4  class="product-price">Giá  <del class="product-old-price">Liên Hệ</del></h4>
 										<div class="product-rating">
+											@for($i=1;$i<=5;$i++)
+											@if($i<=$prods_new->prod_rate)
 											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-								<!-- /product -->
-
-								<!-- product -->
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product02.png" alt="">
-										<div class="product-label">
-											<span class="new">NEW</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+											@else
 											<i class="fa fa-star-o"></i>
+											@endif
+											@endfor
 										</div>
 										<div class="product-btns">
 											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
 											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+											<button class="quick-view" onclick="window.location.href='{{asset('chitietsanpham/'.$prods_new->prod_id.'/'.$prods_new->prod_slug.'.html')}}'"><i class="fa fa-eye"></i><span class="tooltipp">Xem Chi Tiết</span></button>
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn" onclick="window.location.href='{{asset('qoute/'.$prods_new->prod_id.'/'.$prods_new->prod_slug.'.html')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
 									</div>
 								</div>
 								<!-- /product -->
-
-								<!-- product -->
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product03.png" alt="">
-										<div class="product-label">
-											<span class="sale">-30%</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-								<!-- /product -->
-
-								<!-- product -->
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product04.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-								<!-- /product -->
-
-								<!-- product -->
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product05.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-								<!-- /product -->
+								@endif
+								@endforeach
 							</div>
-							<div id="slick-nav-1" class="products-slick-nav"></div>
+							<div id="slick-nav-5{{$key}}" class="products-slick-nav"></div>
 						</div>
+						@endforeach
 						<!-- /tab -->
 					</div>
 				</div>
@@ -301,7 +198,7 @@
 					</ul>
 					<h2 class="text-uppercase">hot deal this week</h2>
 					<p>New Collection Up to 50% OFF</p>
-					<a class="primary-btn cta-btn" href="#">Shop now</a>
+					<a class="primary-btn cta-btn" href="#">Xem Ngay</a>
 				</div>
 			</div>
 		</div>
@@ -309,9 +206,9 @@
 	</div>
 	<!-- /container -->
 </div>
-<!-- /HOT DEAL SECTION -->
+<!-- /HOT DEAL SECTION   -->
 
-<!-- SECTION -->
+<!-- SECTION Best sell-->
 <div class="section">
 	<!-- container -->
 	<div class="container">
@@ -321,13 +218,12 @@
 			<!-- section title -->
 			<div class="col-md-12">
 				<div class="section-title">
-					<h3 class="title">Top selling</h3>
+					<h3 class="title">Sản Tốt Nhất</h3>
 					<div class="section-nav">
-						<ul class="section-tab-nav tab-nav">
-							<li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
-							<li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
-							<li><a data-toggle="tab" href="#tab2">Cameras</a></li>
-							<li><a data-toggle="tab" href="#tab2">Accessories</a></li>
+						<ul class="section-tab-nav tab-nav" id="myTab2">
+							@foreach($_cate_best as $key => $cate_best)
+							<li @if($key == 0) class="active" @endif><a data-toggle="tab" href="#B{{$cate_best}}">{{$cate_best}}</a></li>
+							@endforeach
 						</ul>
 					</div>
 				</div>
@@ -339,160 +235,57 @@
 				<div class="row">
 					<div class="products-tabs">
 						<!-- tab -->
-						<div id="tab2" class="tab-pane fade in active">
-							<div class="products-slick" data-nav="#slick-nav-2">
+						@foreach($_cate_best as $key => $cate_best)
+						<div id="B{{$cate_best}}" class="tab-pane @if($key == 0) active @endif">
+							<div class="products-slick" data-nav="#slick-nav-7{{$key}}">
+								@foreach($_prod_best as $prod_best)
+								@if($cate_best == $prod_best->cate_name)
 								<!-- product -->
 								<div class="product">
-									<div class="product-img">
-										<img src="./img/product06.png" alt="">
-										<div class="product-label">
-											<span class="sale">-30%</span>
-											<span class="new">NEW</span>
+									<a href="{{asset('chitietsanpham/'.$prod_best->prod_id.'/'.$prod_best->prod_slug.'.html')}}">
+										<div class="product-img">
+											<img src="../images/products/{{$prod_best->prod_img}}" alt="{{$prod_best->prod_img}}">
+											<div class="product-label">
+												<!-- <span class="sale">-30%</span> -->
+												<span class="new">BEST</span>
+											</div>
 										</div>
-									</div>
+									</a>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<p class="product-category">{{$cate_best}}</p>
+										<h3 class="product-name"><a href="{{asset('chitietsanpham/'.$prod_best->prod_id.'/'.$prod_best->prod_slug.'.html')}}">{{$prod_best->prod_name}}</a></h3>
+										<h4  class="product-price">Giá  <del class="product-old-price">Liên Hệ</del></h4>
 										<div class="product-rating">
+											@for($i=1;$i<=5;$i++)
+											@if($i<=$prod_best->prod_rate)
 											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-								<!-- /product -->
-
-								<!-- product -->
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product07.png" alt="">
-										<div class="product-label">
-											<span class="new">NEW</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+											@else
 											<i class="fa fa-star-o"></i>
+											@endif
+											@endfor
 										</div>
 										<div class="product-btns">
 											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
 											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+											<button class="quick-view" onclick="window.location.href='{{asset('chitietsanpham/'.$prod_best->prod_id.'/'.$prod_best->prod_slug.'.html')}}'"><i class="fa fa-eye"></i><span class="tooltipp">Xem Chi Tiết</span></button>
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn" onclick="window.location.href='{{asset('qoute/'.$prod_best->prod_id.'/'.$prod_best->prod_slug.'.html')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
 									</div>
 								</div>
 								<!-- /product -->
-
-								<!-- product -->
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product08.png" alt="">
-										<div class="product-label">
-											<span class="sale">-30%</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-								<!-- /product -->
-
-								<!-- product -->
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product09.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-								<!-- /product -->
-
-								<!-- product -->
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product01.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-									</div>
-								</div>
-								<!-- /product -->
+								@endif
+								@endforeach
 							</div>
-							<div id="slick-nav-2" class="products-slick-nav"></div>
+							<div id="slick-nav-7{{$key}}" class="products-slick-nav"></div>
 						</div>
+						@endforeach
 						<!-- /tab -->
 					</div>
 				</div>
 			</div>
-			<!-- /Products tab & slick -->
+			<!-- Products tab & slick -->
 		</div>
 		<!-- /row -->
 	</div>
@@ -508,105 +301,45 @@
 		<div class="row">
 			<div class="col-md-4 col-xs-6">
 				<div class="section-title">
-					<h4 class="title">Top selling</h4>
+					<h4 class="title">Top Random</h4>
 					<div class="section-nav">
-						<div id="slick-nav-3" class="products-slick-nav"></div>
+						<div id="slick-nav-random_66" class="products-slick-nav"></div>
 					</div>
 				</div>
 
-				<div class="products-widget-slick" data-nav="#slick-nav-3">
+				<div class="products-widget-slick" data-nav="#slick-nav-random_66">
+					@for($i=3;$i<$count_random;$i+=3)
 					<div>
+						@foreach($_prod_random as $key=> $prods_random)
 						<!-- product widget -->
+						@if($i-3 <= $key && $key < $i)
 						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product07.png" alt="">
-							</div>
+							<a href="{{asset('chitietsanpham/'.$prods_random->prod_id.'/'.$prods_random->prod_slug.'.html')}}">
+								<div class="product-img">
+									<img src="../images/products/{{$prods_random->prod_img}}" alt="{{$prods_random->prod_img}}">
+								</div>
+							</a>
 							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								<p class="product-category">{{$prods_random->cate_name}}</p>
+								<h3 class="product-name"><a href="{{asset('chitietsanpham/'.$prods_random->prod_id.'/'.$prods_random->prod_slug.'.html')}}">{{$prods_random->prod_name}}</a></h3>
+								<h4  class="product-price">Giá  <del class="product-old-price">Liên Hệ</del></h4>
 							</div>
 						</div>
+						@endif
 						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product08.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product09.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+						@endforeach
 					</div>
-
-					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product01.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product02.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
-					</div>
+					@endfor
 				</div>
 			</div>
 
-			<div class="col-md-4 col-xs-6">
+			<div class="col-md-4 col-xs-6" >
 				<div class="section-title">
-					<h4 class="title">Top selling</h4>
+					<h4 class="title">Top New</h4>
 					<div class="section-nav">
 						<div id="slick-nav-4" class="products-slick-nav"></div>
 					</div>
 				</div>
-
 				<div class="products-widget-slick" data-nav="#slick-nav-4">
 					<div>
 						<!-- product widget -->
@@ -694,9 +427,9 @@
 
 			<div class="clearfix visible-sm visible-xs"></div>
 
-			<div class="col-md-4 col-xs-6">
+			<div class="col-md-4 col-xs-6" >
 				<div class="section-title">
-					<h4 class="title">Top selling</h4>
+					<h4 class="title">Top Proriect</h4>
 					<div class="section-nav">
 						<div id="slick-nav-5" class="products-slick-nav"></div>
 					</div>
@@ -802,6 +535,21 @@
 <script src="js/nouislider.min.js"></script>
 <script src="js/jquery.zoom.min.js"></script>
 <script src="js/main.js"></script>
+<script src="../backend/assets/js/vendor/bootstrap-rating.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$('#myTab a:first').tab('show');
+		$('#myTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+		$('#myTab2 a:first').tab('show');
+		$('#myTab2 a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	});
 
+</script>
 @stop
 @stop

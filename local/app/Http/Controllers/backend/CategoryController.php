@@ -10,16 +10,30 @@ use App\Http\Requests\backend\CategoryRequest;
 class CategoryController extends Controller
 {
 	public function getAddCategory(){
-		$cate['categories'] = CaloteryModel::Where('cate_main','parents')->orderby('cate_id','desc')->get();
+		$cate['categories'] = CaloteryModel::Where('cate_level',0)->orderby('cate_id','desc')->get();
 		return view('backend.add-category',$cate);
 	}
 	public function postAddCategory(CategoryRequest $request){
 		$cate = new CaloteryModel;
-		$cate->cate_name = $request->cate_name;
-		$cate->cate_main = $request->cate_main;
-		$cate->cate_level = $request->cate_level;
-		$cate->save();
-		return redirect()->intended('admin/categories/show');
+		if($request->cate_main == "children" && $request->cate_level == 0){
+			return back()->withInput()->with('error_add_cate',' You must choise category parents');
+		}elseif ($request->cate_main == "children" && $request->cate_level != 0) {
+			$cate->cate_name = $request->cate_name;
+			$cate->cate_main = $request->cate_main;
+			$cate->cate_level = $request->cate_level;
+			$cate->save();
+			$cate2 = CaloteryModel::find($request->cate_level);
+			$cate2->cate_main = "parents";
+			$cate2->save();
+			return redirect()->intended('admin/categories/show');
+		}else{
+			$cate->cate_name = $request->cate_name;
+			$cate->cate_main = $request->cate_main;
+			$cate->cate_level = $request->cate_level;
+			$cate->save();
+			return redirect()->intended('admin/categories/show');
+		}
+
 	}
 	public function getShowCategory(){
 		$cate['categories'] = CaloteryModel::orderby('cate_id','desc')->paginate(10);
