@@ -64,8 +64,20 @@ Route::group(['namespace'=>'backend'], function(){
 Route::group(['namespace'=>'frontend'], function(){
 	Route::get('/','FronEndViewController@getBksensor');
 	Route::get('chitietsanpham/{id}/{slug}.html','FronEndViewController@getProductDetail');
-	Route::get('{cate}/{search}','FronEndViewController@getCateProduct');
-
+	Route::get('{cate}/{name}.html','FronEndViewController@getCateProduct');
+	Route::get('lienhe','FronEndViewController@getAdress');
+	Route::get('search','FronEndViewController@getSearch');
+	Route::get('baohanh-dieukhoan','FronEndViewController@getLaw');
+	Route::post('sub','FronEndViewController@postSub');
+	Route::group(['prefix'=>'checkout'], function(){
+		Route::get('/','CartController@getCart');
+		Route::get('add/{id}','CartController@getAddCart');
+		Route::get('update','CartController@getUpdateCart');
+		Route::get('delete/{rowId}','CartController@getDeleteCart');
+		Route::post('payment/guest','CartController@postPayment');
+		Route::get('payment//user/{id}','CartController@getPayment');
+	});
 });
 
 	// ++++++++++++++++++++++/end frontend+++++++
+Route::get('exel','TestExel@getExel');

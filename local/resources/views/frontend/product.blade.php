@@ -109,17 +109,18 @@
 							</select>
 						</label>
 					</div>
-
 					<div class="add-to-cart">
-						<div class="qty-label">
-							Qty
-							<div class="input-number">
-								<input type="number" value="1" name="qty" min="1">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
+						<form action="{{asset('/checkout/add/'.$_prods_det->prod_id)}}">
+							<div class="qty-label">
+								Qty
+								<div class="input-number">
+									<input type="number" value="1" id="qty" name="qty" min="1">
+									<span class="qty-up">+</span>
+									<span class="qty-down">-</span>
+								</div>
 							</div>
-						</div>
-						<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+							<button type="submit" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i> Thêm Báo Giá</button>
+						</form>
 					</div>
 					<ul class="product-links">
 						<li>Danh Mục:</li>
@@ -154,7 +155,7 @@
 						<div id="tab1" class="tab-pane fade in active">
 							<div class="row">
 								<div class="col-md-12">
-									<p>{{$_prods_det->prod_code}}</p>
+									<p>{{$_prods_det->prod_detail}}</p>
 								</div>
 							</div>
 						</div>
@@ -263,7 +264,7 @@
 								<!-- /Rating -->
 
 								<!-- Reviews -->
-								<div class="col-md-6">
+								<!-- <div class="col-md-6">
 									<div id="reviews">
 										<ul class="reviews">
 											<li>
@@ -323,30 +324,32 @@
 											<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
 										</ul>
 									</div>
-								</div>
+								</div> -->
 								<!-- /Reviews -->
 
 								<!-- Review Form -->
-								<div class="col-md-3">
+								<!-- <div class="col-md-3">
 									<div id="review-form">
-										<form class="review-form">
-											<input class="input" type="text" placeholder="Your Name">
-											<input class="input" type="email" placeholder="Your Email">
-											<textarea class="input" placeholder="Your Review"></textarea>
+										<form class="review-form" id="myForm">
+											<input class="input" type="text" name="username" id="username" placeholder="Your Name">
+											<input class="input" type="email" name="email" id="email" placeholder="Your Email">
+											<textarea class="input" name="comment" id="comment" placeholder="Your Review"></textarea>
 											<div class="input-rating">
 												<span>Your Rating: </span>
 												<div class="stars">
-													<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-													<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-													<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-													<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-													<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+													<input id="star5" name="rating" class="rating" value="5" type="radio"><label for="star5"></label>
+													<input id="star4" name="rating" class="rating" value="4" type="radio"><label for="star4"></label>
+													<input id="star3" name="rating" class="rating" value="3" type="radio"><label for="star3"></label>
+													<input id="star2" name="rating" class="rating" value="2" type="radio"><label for="star2"></label>
+													<input id="star1" name="rating" class="rating" value="1" type="radio"><label for="star1"></label>
 												</div>
 											</div>
-											<button class="primary-btn">Submit</button>
+											<button class="primary-btn" id="ajaxSubmit">Bình Luận</button>
 										</form>
 									</div>
-								</div>
+								</div> -->
+								<h3>Bình luận</h3>
+								<div class="fb-comments" data-href="http://bksensor.com" data-width="850" data-numposts="3" data-colorscheme="light" data-mobile="Auto-detected"></div>
 								<!-- /Review Form -->
 							</div>
 						</div>

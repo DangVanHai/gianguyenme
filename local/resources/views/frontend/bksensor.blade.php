@@ -33,7 +33,7 @@
 			<div class="col-md-4 col-xs-6">
 				<div class="shop">
 					<div class="shop-img">
-						<img src="./img/news.png" alt="">
+						<img src="./img/news.png" alt="BKsensor new">
 					</div>
 					<div class="shop-body">
 						<h3>Bảng Tin<br>Công Nghệ SmartHome</h3>
@@ -140,7 +140,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn" onclick="window.location.href='{{asset('qoute/'.$prods_new->prod_id.'/'.$prods_new->prod_slug.'.html')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
+										<button class="add-to-cart-btn" onclick="window.location.href='{{asset('checkout/add/'.$prods_new->prod_id.'?qty=1')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
 									</div>
 								</div>
 								<!-- /product -->
@@ -271,7 +271,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn" onclick="window.location.href='{{asset('qoute/'.$prod_best->prod_id.'/'.$prod_best->prod_slug.'.html')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
+										<button class="add-to-cart-btn" onclick="window.location.href='{{asset('checkout/add/'.$prod_best->prod_id.'?qty=1')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
 									</div>
 								</div>
 								<!-- /product -->

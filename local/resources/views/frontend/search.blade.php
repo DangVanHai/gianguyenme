@@ -1,5 +1,5 @@
 @extends('frontend.master')
-@section('title','Danh Sách Sản Phẩm')
+@section('title','Tìm Kiếm Sản Phẩm')
 @section('main')
 @section('header')
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -28,13 +28,12 @@
 			<div class="col-md-12">
 				<ul class="breadcrumb-tree">
 					<li><a href="{{asset('/')}}">Home</a></li>
-					<li class="active">
-						@foreach($_prods_cate as $key=>$value)
-						@if($key==0)
-						{{$value->cate_name}} ({{count($_prods_cate)}})
-						@endif
-						@endforeach
-					</li>
+					@if(isset($iterm1))
+					<li><a href="{{asset('/')}}">Tất Cả</a></li>
+					@else
+					<li><a href="{{asset('/'.$cate_name->cate_id.'/'.$cate_name->cate_name.'.html')}}">{{$cate_name->cate_name}}</a></li>
+					@endif
+					<li class="active">{{$keyword}}</li>
 				</ul>
 			</div>
 		</div>
@@ -54,20 +53,17 @@
 			<div id="aside" class="col-md-3">
 				<!-- aside Widget -->
 				<div class="aside">
-					<h3 class="aside-title">Danh Mục</h3>
+					<h3 class="aside-title">Nhà Cung Cấp</h3>
 					<div class="checkbox-filter">
-						<form onchange="">
-							@foreach($cate_childrens as $key=>$value)
-							<div class="input-checkbox">
-								<input type="checkbox" name="{{$value->cate_name}}" value="{{$value->cate_name}}" id="category-{{$key}}">
-								<label for="category-{{$key}}">
-									<span></span>
-									{{$value->cate_name}}
-									<small>({{($key+2)*12}})</small>
-								</label>
-							</div>
-							@endforeach
-						</form>
+						@foreach($partners as $key=>$value)
+						<div class="input-checkbox">
+							<label for="category-{{$key}}">
+								<span></span>
+								{{$value}}
+								<small>({{($key+2)*12}})</small>
+							</label>
+						</div>
+						@endforeach
 					</div>
 				</div>
 				<!-- /aside Widget -->
@@ -142,13 +138,14 @@
 				<!-- store products -->
 				<div class="row">
 					<!-- product -->
-					@foreach($_prods_cate as $prods_cate)
+					@if(isset($iterm1))
+					@foreach($iterm1 as $iterm)
 					<div class="col-md-4 col-xs-6">
 						<!-- product -->
 						<div class="product">
-							<a href="{{asset('chitietsanpham/'.$prods_cate->prod_id.'/'.$prods_cate->prod_slug.'.html')}}">
+							<a href="{{asset('chitietsanpham/'.$iterm->prod_id.'/'.$iterm->prod_slug.'.html')}}">
 								<div class="product-img">
-									<img src="../images/products/{{$prods_cate->prod_img}}" alt="{{$prods_cate->prod_img}}">
+									<img src="../images/products/{{$iterm->prod_img}}" alt="{{$iterm->prod_img}}">
 									<div class="product-label">
 										<!-- <span class="sale">-30%</span> -->
 										<span class="new">NEW</span>
@@ -156,12 +153,12 @@
 								</div>
 							</a>
 							<div class="product-body">
-								<p class="product-category">{{$prods_cate->cate_name}}</p>
-								<h3 class="product-name"><a href="{{asset('chitietsanpham/'.$prods_cate->prod_id.'/'.$prods_cate->prod_slug.'.html')}}">{{$prods_cate->prod_name}}</a></h3>
+								<p class="product-category">{{$iterm->cate_name}}</p>
+								<h3 class="product-name"><a href="{{asset('chitietsanpham/'.$iterm->prod_id.'/'.$iterm->prod_slug.'.html')}}">{{$iterm->prod_name}}</a></h3>
 								<h4  class="product-price">Giá  <del class="product-old-price">Liên Hệ</del></h4>
 								<div class="product-rating">
 									@for($i=1;$i<=5;$i++)
-									@if($i<=$prods_cate->prod_rate)
+									@if($i<=$iterm->prod_rate)
 									<i class="fa fa-star"></i>
 									@else
 									<i class="fa fa-star-o"></i>
@@ -171,32 +168,86 @@
 								<div class="product-btns">
 									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
 									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view" onclick="window.location.href='{{asset('chitietsanpham/'.$prods_cate->prod_id.'/'.$prods_cate->prod_slug.'.html')}}'"><i class="fa fa-eye"></i><span class="tooltipp">Xem Chi Tiết</span></button>
+									<button class="quick-view" onclick="window.location.href='{{asset('chitietsanpham/'.$iterm->prod_id.'/'.$iterm->prod_slug.'.html')}}'"><i class="fa fa-eye"></i><span class="tooltipp">Xem Chi Tiết</span></button>
 								</div>
 							</div>
 							<div class="add-to-cart">
-								<button class="add-to-cart-btn" onclick="window.location.href='{{asset('checkout/add/'.$prods_cate->prod_id.'?qty=1')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
+								<button class="add-to-cart-btn" onclick="window.location.href='{{asset('checkout/add/'.$iterm->prod_id.'?qty=1')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
 							</div>
 						</div>
 						<!-- /product -->
 					</div>
 					@endforeach
+					@else
+					@foreach($iterm2 as $iterm)
+					<div class="col-md-4 col-xs-6">
+						<!-- product -->
+						<div class="product">
+							<a href="{{asset('chitietsanpham/'.$iterm->prod_id.'/'.$iterm->prod_slug.'.html')}}">
+								<div class="product-img">
+									<img src="../images/products/{{$iterm->prod_img}}" alt="{{$iterm->prod_img}}">
+									<div class="product-label">
+										<!-- <span class="sale">-30%</span> -->
+										<span class="new">NEW</span>
+									</div>
+								</div>
+							</a>
+							<div class="product-body">
+								<p class="product-category">{{$iterm->cate_name}}</p>
+								<h3 class="product-name"><a href="{{asset('chitietsanpham/'.$iterm->prod_id.'/'.$iterm->prod_slug.'.html')}}">{{$iterm->prod_name}}</a></h3>
+								<h4  class="product-price">Giá  <del class="product-old-price">Liên Hệ</del></h4>
+								<div class="product-rating">
+									@for($i=1;$i<=5;$i++)
+									@if($i<=$iterm->prod_rate)
+									<i class="fa fa-star"></i>
+									@else
+									<i class="fa fa-star-o"></i>
+									@endif
+									@endfor
+								</div>
+								<div class="product-btns">
+									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view" onclick="window.location.href='{{asset('chitietsanpham/'.$iterm->prod_id.'/'.$iterm->prod_slug.'.html')}}'"><i class="fa fa-eye"></i><span class="tooltipp">Xem Chi Tiết</span></button>
+								</div>
+							</div>
+							<div class="add-to-cart">
+								<button class="add-to-cart-btn" onclick="window.location.href='{{asset('checkout/add/'.$iterm->prod_id.'?qty=1')}}'"><i class="fa fa-shopping-cart"></i> Thêm Vào báo Giá</button>
+							</div>
+						</div>
+						<!-- /product -->
+					</div>
+					@endforeach
+					@endif
 					<!-- /product -->
 				</div>
 				<!-- /store products -->
 
 				<!-- store bottom filter -->
 				<div class="store-filter clearfix">
-					@if(count($_prods_cate)>9)
+					@if(isset($iterm1))
+					@if(count($iterm1)>9)
 					<span class="store-qty">đang hiển thị 10-100 Sản Phẩm</span>
-					@elseif(count($_prods_cate)>=1 && count($_prods_cate)<= 9)
+					@elseif(count($iterm1)>=1 && count($iterm1)<= 9)
 					<span class="store-qty">đang hiển thị dới 10 Sản Phẩm</span>
-					@elseif(count($_prods_cate)== 0)
+					@elseif(count($iterm1)== 0)
 					<span class="store-qty">chưa có Sản Phẩm trong danh mục này</span>
 					@endif
 					<ul class="store-pagination"> 
-						{{$_prods_cate->links()}}
+						{{$iterm1->links()}}
 					</ul>
+					@else
+					@if(count($iterm2)>9)
+					<span class="store-qty">đang hiển thị 10-100 Sản Phẩm</span>
+					@elseif(count($iterm2)>=1 && count($iterm2)<= 9)
+					<span class="store-qty">đang hiển thị dới 10 Sản Phẩm</span>
+					@elseif(count($iterm2)== 0)
+					<span class="store-qty">chưa có Sản Phẩm trong danh mục này</span>
+					@endif
+					<ul class="store-pagination"> 
+						{{$iterm2->links()}}
+					</ul>
+					@endif
 				</div>
 				<!-- /store bottom filter -->
 			</div>
@@ -217,6 +268,5 @@
 <script src="js/nouislider.min.js"></script>
 <script src="js/jquery.zoom.min.js"></script>
 <script src="js/main.js"></script>
-
 @stop
 @stop
