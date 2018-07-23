@@ -13,7 +13,7 @@
 
 	// +++++++++++++++++++++++++start backend++++++++++++++++++++++++++++
 Route::group(['namespace'=>'backend'], function(){
-	Route::group(['prefix'=>'admin'], function(){
+	Route::group(['prefix'=>'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('/','ViewController@getDashboard');
 
 		Route::group(['prefix'=>'users'], function(){
