@@ -24,7 +24,7 @@ class CategoryRequest extends FormRequest
      public function rules()
     {
         return [
-            'cate_name'=>'unique:Calotery,cate_name',
+            'cate_name'=>'unique:calotery,cate_name',
             'cate_main'=>'required',
         ];
     }

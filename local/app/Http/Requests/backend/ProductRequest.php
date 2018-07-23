@@ -24,7 +24,7 @@ class ProductRequest extends FormRequest
      public function rules()
     {
         return [
-            'prod_code'=>'unique:Product,prod_code',
+            'prod_code'=>'unique:product,prod_code',
         ];
     }
     public function messages()

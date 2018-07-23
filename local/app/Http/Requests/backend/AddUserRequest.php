@@ -25,7 +25,7 @@ class AddUserRequest extends FormRequest
     {
         return [
             'password'=>'min:6|max:20',
-            'email'=>'unique:UserAccount,email',
+            'email'=>'unique:useraccount,email',
         ];
     }
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserModel extends Model
 {
-    protected $table = 'UserAccount';
+    protected $table = 'useraccount';
     protected $primaryKey = 'user_id';
     // protected $fillable = [
 

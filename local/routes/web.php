@@ -69,6 +69,10 @@ Route::group(['namespace'=>'frontend'], function(){
 	Route::get('search','FronEndViewController@getSearch');
 	Route::get('baohanh-dieukhoan','FronEndViewController@getLaw');
 	Route::post('sub','FronEndViewController@postSub');
+	Route::get('taikhoan','FronEndViewController@getSubUser');
+	Route::post('taikhoan','FronEndViewController@postLogin');
+	Route::post('taikhoan/dangky','FronEndViewController@postAddUser');
+	Route::get('taikhoan/dangxuat','FronEndViewController@getLogout');
 	Route::group(['prefix'=>'checkout'], function(){
 		Route::get('/','CartController@getCart');
 		Route::get('add/{id}','CartController@getAddCart');

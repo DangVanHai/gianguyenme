@@ -337,91 +337,32 @@
 				<div class="section-title">
 					<h4 class="title">Top New</h4>
 					<div class="section-nav">
-						<div id="slick-nav-4" class="products-slick-nav"></div>
+						<div id="slick-nav-topNew4" class="products-slick-nav"></div>
 					</div>
 				</div>
-				<div class="products-widget-slick" data-nav="#slick-nav-4">
+				<div class="products-widget-slick" data-nav="#slick-nav-topNew4">
+					@for($i=3;$i<$count_Newrandom;$i+=3)
 					<div>
+						@foreach($_top_new as $key=> $top_new)
 						<!-- product widget -->
+						@if($i-3 <= $key && $key < $i)
 						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product04.png" alt="">
-							</div>
+							<a href="{{asset('chitietsanpham/'.$top_new->prod_id.'/'.$top_new->prod_slug.'.html')}}">
+								<div class="product-img">
+									<img src="../images/products/{{$top_new->prod_img}}" alt="{{$top_new->prod_img}}">
+								</div>
+							</a>
 							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								<p class="product-category">{{$top_new->cate_name}}</p>
+								<h3 class="product-name"><a href="{{asset('chitietsanpham/'.$top_new->prod_id.'/'.$top_new->prod_slug.'.html')}}">{{$top_new->prod_name}}</a></h3>
+								<h4  class="product-price">Giá  <del class="product-old-price">Liên Hệ</del></h4>
 							</div>
 						</div>
+						@endif
 						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product05.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product06.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+						@endforeach
 					</div>
-
-					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product07.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product08.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product09.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
-					</div>
+					@endfor
 				</div>
 			</div>
 
@@ -431,92 +372,33 @@
 				<div class="section-title">
 					<h4 class="title">Top Proriect</h4>
 					<div class="section-nav">
-						<div id="slick-nav-5" class="products-slick-nav"></div>
+						<div id="slick-nav-random_666" class="products-slick-nav"></div>
 					</div>
 				</div>
 
-				<div class="products-widget-slick" data-nav="#slick-nav-5">
+				<div class="products-widget-slick" data-nav="#slick-nav-random_666">
+					@for($i=3;$i<$count_random;$i+=3)
 					<div>
+						@foreach($_prod_random as $key=> $prods_random)
 						<!-- product widget -->
+						@if($i-3 <= $key && $key < $i)
 						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product01.png" alt="">
-							</div>
+							<a href="{{asset('chitietsanpham/'.$prods_random->prod_id.'/'.$prods_random->prod_slug.'.html')}}">
+								<div class="product-img">
+									<img src="../images/products/{{$prods_random->prod_img}}" alt="{{$prods_random->prod_img}}">
+								</div>
+							</a>
 							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								<p class="product-category">{{$prods_random->cate_name}}</p>
+								<h3 class="product-name"><a href="{{asset('chitietsanpham/'.$prods_random->prod_id.'/'.$prods_random->prod_slug.'.html')}}">{{$prods_random->prod_name}}</a></h3>
+								<h4  class="product-price">Giá  <del class="product-old-price">Liên Hệ</del></h4>
 							</div>
 						</div>
+						@endif
 						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product02.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
+						@endforeach
 					</div>
-
-					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product04.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product05.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="./img/product06.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
-					</div>
+					@endfor
 				</div>
 			</div>
 

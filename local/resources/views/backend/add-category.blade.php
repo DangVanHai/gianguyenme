@@ -67,7 +67,7 @@
 				</div>
 			</div>
 			
-			<div class="col-lg-6 Aparents Bchildren" style="display:none">
+			<div class="col-lg-6 Aparent Bchildren" style="display:none">
 				<div class="card">
 					<div class="card-header">Select Category parent</div>
 					<div class="card-body card-block">

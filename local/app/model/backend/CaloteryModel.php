@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CaloteryModel extends Model
 {
-    protected $table = 'Calotery';
+    protected $table = 'calotery';
     protected $primaryKey = 'cate_id';
     // protected $fillable = [
 

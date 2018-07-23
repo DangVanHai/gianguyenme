@@ -84,10 +84,9 @@
 							@endif
 							@endfor
 						</div>
-						<a class="review-link" href="">10 Review(s) | Add your review</a>
 					</div>
 					<div>
-						<h3 class="product-price"><strong>Giá :</strong> Liên hệ </h3>
+						<a class="review-link" href="{{asset('lienhe')}}"><h3 class="product-price"><strong>Giá :</strong>Liên Hệ</h3></a>
 						@if($_prods_det->prod_qtyR >0)
 						<span class="product-available">Còn Hàng</span>
 						@else

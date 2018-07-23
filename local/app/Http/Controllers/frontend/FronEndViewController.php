@@ -13,6 +13,9 @@ use Carbon\Carbon;
 use DB;
 use Validator;
 use Auth;
+use App\model\backend\UserModel;
+use App\Http\Requests\backend\AddUserRequest;
+use Illuminate\Support\Facades\Hash;
 class FronEndViewController extends Controller
 {
 	public function getBksensor(){
@@ -23,9 +26,9 @@ class FronEndViewController extends Controller
 		$prods['_cate_new'] = CaloteryModel::where('cate_main','children')->orWhere('cate_main','parent')->inRandomOrder()->take(4)->get();
 
 		// best sell with rating >= 4 star
-		$data = DB::table('Product')
-		->join('Calotery', 'Product.prod_cate', '=', 'Calotery.cate_id')
-		->select('Product.*', 'Calotery.*');
+		$data = DB::table('product')
+		->join('calotery', 'product.prod_cate', '=', 'calotery.cate_id')
+		->select('product.*', 'calotery.*');
 
 		$cate= $data->where('prod_rate','>=',4)->orderby('prod_id','desc')->get()->toArray();
 
@@ -34,8 +37,10 @@ class FronEndViewController extends Controller
 		$prods['_cate_best'] = array_unique($cate_star);
 		$prods['_prod_best'] = $data->where('prod_rate','>=',4)->orderby('prod_id','desc')->get();
 		//random
-		$prods['_prod_random'] = ProductModel::orderby('prod_id','desc')->inRandomOrder()->get();
+		$prods['_prod_random'] = $data->orderby('prod_id','desc')->inRandomOrder()->get();
 		$prods['count_random']= count($prods['_prod_random'])+3;
+		$prods['_top_new'] = $data->orderby('prod_id','desc')->get();
+		$prods['count_Newrandom']= count($prods['_top_new'])+3;
 		return view('frontend.bksensor',$prods);
 	}
 	public function getProductDetail($id){
@@ -43,16 +48,16 @@ class FronEndViewController extends Controller
 		foreach ($prods['_prods_det']->all() as $value) {
 			$prods_cate = $value['prod_cate'];
 		}
-		$data = DB::table('Product')
-		->join('Calotery', 'Product.prod_cate', '=', 'Calotery.cate_id')
-		->select('Product.*', 'Calotery.*');
+		$data = DB::table('product')
+		->join('calotery', 'product.prod_cate', '=', 'calotery.cate_id')
+		->select('product.*', 'calotery.*');
 		$prods['_prods_relate'] = $data->where('prod_cate', $prods_cate)->inRandomOrder()->take(4)->get();
 		return view('frontend.product',$prods);
 	}
 	public function getCateProduct($cate){
-		$data = DB::table('Product')
-		->join('Calotery', 'Product.prod_cate', '=', 'Calotery.cate_id')
-		->select('Product.*', 'Calotery.*');
+		$data = DB::table('product')
+		->join('calotery', 'product.prod_cate', '=', 'calotery.cate_id')
+		->select('product.*', 'calotery.*');
 		$loc = CaloteryModel::find($cate);
 		if($loc->cate_main == "parents"){
 			$loc2 = CaloteryModel::where('cate_level', $cate)->get()->toArray();
@@ -70,9 +75,9 @@ class FronEndViewController extends Controller
 	}
 
 	public function getSearch(Request $request){
-		$data = DB::table('Product')
-		->join('Calotery', 'Product.prod_cate', '=', 'Calotery.cate_id')
-		->select('Product.*', 'Calotery.*');
+		$data = DB::table('product')
+		->join('calotery', 'product.prod_cate', '=', 'calotery.cate_id')
+		->select('product.*', 'calotery.*');
 
 		$partner= $data->orderby('prod_partner_name','desc')->get()->toArray();
 
@@ -139,5 +144,44 @@ class FronEndViewController extends Controller
 	public function getLaw(Request $request){
 		
 		return view('frontend.law');
+	}
+	public function getSubUser(Request $request){
+		return view('frontend.taikhoan');
+	}
+	public function postLogin(Request $request){
+		$credentials =
+		[
+			'email'=>$request->email,
+			'password'=>$request->password,
+		];
+		if ($request->check='Remember Me'){
+			$remember = true;
+		}else{
+			$remember = false;
+		}
+		if (Auth::attempt($credentials,$remember)) {
+            // Authentication passed...
+			return back()->withInput()->with('success','bạn đã đăng nhập thành công');
+			return back();
+			
+		}else{
+			
+			return back()->withInput()->with('error','tài khoản hoặc mật khẩu chưa đúng hoặc bạn không có quyền truy cập');
+		}
+	}
+	public function getLogout(){
+		Auth::logout();
+		return redirect()->intended('/');
+	}
+	public function postAddUser(AddUserRequest $request){
+		$user = new UserModel;
+		$user->full_name = $request->username;
+		$user->username = $request->username;
+		$user->email = $request->email;
+		$user->password =Hash::make($request->password);
+		$user->phone = $request->phone;
+		$user->level = "3";
+		$user->save();
+		return back()->withInput()->with('success','bạn đã đăng ký thành công hãy đăng nhập để kiểm tra');
 	}
 }
