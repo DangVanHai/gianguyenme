@@ -43,15 +43,16 @@
 				<ul class="header-links pull-right">
 					<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i> Liên Hệ</a></li>
 					@if(Auth::check())
-					
 					<li>
 						<div class="user-area dropdown float-right">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<p ><i class="fa fa-user-o"></i>Hi, {{Auth::user()->username}}</p>
 							</a>
 							<div class="user-menu dropdown-menu" style="background:#1E1F29;">
+								@if(Auth::user()->level!=3)
+								<a  href="{{asset('admin')}}">Manager</a><br>
+								@endif
 								<a  href="{{asset('taikhoan')}}">My Profile</a><br>
-
 								<a  href="{{asset('taikhoan/dangxuat')}}"></i>Logout</a>
 							</div>
 						</div>

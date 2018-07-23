@@ -85,19 +85,19 @@
 						</div>
 						@else
 						<div class="form-group">
-							<input class="input" type="text" name="full_name" placeholder="First Name">
+							<input class="input" type="text" disabled="" name="name" value="{{Auth::user()->username}}">
 						</div>
 						<div class="form-group">
-							<input class="input" type="text" name="company_name" placeholder="First Name">
+							<input class="input" type="email" disabled="" name="email" value="{{Auth::user()->email}}">
 						</div>
 						<div class="form-group">
-							<input class="input" type="text" name="address" placeholder="Địa chỉ">
+							<input class="input" type="tel" disabled="" name="phone" value="{{Auth::user()->phone}}">
 						</div>
 						<div class="form-group">
-							<input class="input" type="email" name="email" placeholder="Email">
+							<input class="input" type="text" required="" name="address" placeholder="Địa chỉ của bạn">
 						</div>
 						<div class="form-group">
-							<input class="input" type="tel" name="phone" placeholder="Số điện thoại">
+							<input class="input" type="text" name="company" placeholder="Tên công ty của bạn">
 						</div>
 						@endif
 					</div>
