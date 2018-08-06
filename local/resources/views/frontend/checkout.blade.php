@@ -85,13 +85,13 @@
 						</div>
 						@else
 						<div class="form-group">
-							<input class="input" type="text" disabled="" name="name" value="{{Auth::user()->username}}">
+							<input class="input" type="text"  name="name" value="{{Auth::user()->username}}">
 						</div>
 						<div class="form-group">
-							<input class="input" type="email" disabled="" name="email" value="{{Auth::user()->email}}">
+							<input class="input" type="email"  name="email" value="{{Auth::user()->email}}">
 						</div>
 						<div class="form-group">
-							<input class="input" type="tel" disabled="" name="phone" value="{{Auth::user()->phone}}">
+							<input class="input" type="tel"  name="phone" value="{{Auth::user()->phone}}">
 						</div>
 						<div class="form-group">
 							<input class="input" type="text" required="" name="address" placeholder="Địa chỉ của bạn">
@@ -114,7 +114,8 @@
 				</div>
 
 				<!-- Order Details -->
-				<div class="col-md-7 order-details">
+				<p id="thongbao" style="display: none;" class="alert alert-primery">Báo giá của bạn đang được gửi xin vùi lòng chờ chút....</p>
+				<div id="baogia" class="col-md-7 order-details">
 					<div class="section-title text-center">
 						<h3 class="title">Yêu cầu Báo Giá Của Bạn</h3>
 					</div>
@@ -152,10 +153,10 @@
 					<div class="input-checkbox">
 						<label for="terms">
 							<span></span>
-							Chúng tôi sẽ gửi yêu cầu báo giá chi tiết sản phẩm kèm <a href="#">Điều khoản và điều kiện</a>
+							Chúng tôi sẽ gửi yêu cầu báo giá chi tiết sản phẩm kèm <a href="{{asset('law')}}">Điều khoản và điều kiện</a>
 						</label>
 					</div>
-					<button type="submit"  class="primary-btn order-submit">Gửi Yêu Cầu</button>
+					<button type="submit" id="quotes" class="primary-btn order-submit">Gửi Yêu Cầu</button>
 					
 					{{csrf_field()}}
 				</form>
@@ -191,6 +192,12 @@
 			}
 			);
 	}
+	$(document).ready(function(){
+		$("#quotes").click(function(){
+			$("#baogia").hide();
+			$("#thongbao").show();
+		});
+	});
 </script>
 
 @stop

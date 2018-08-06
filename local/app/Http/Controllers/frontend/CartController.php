@@ -28,7 +28,10 @@ class CartController extends Controller
 	public function getAddCart(Request $request,$id){
 		$Product = ProductModel::find($id);
 		$qty = $request->qty;
-		Cart::add(['id' => $id, 'name' => $Product->prod_name, 'qty' => $qty, 'price' =>  $Product->prod_pe, 'options' => ['image' =>$Product-> prod_img,'slug' =>  $Product->prod_slug]]);
+		$data =  $Product->prod_img;
+		$data =str_replace(' ', '%20',$data);
+		Cart::add(['id' => $id, 'name' => $Product->prod_name, 'qty' => $qty, 'price' =>  $Product->prod_pe, 'options' => ['image' =>$Product-> prod_img,'image_email' =>$data,'slug' =>  $Product->prod_slug]]);
+		
 		return redirect()->intended('checkout');
 	}
 	public function getUpdateCart(Request $request){

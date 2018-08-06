@@ -91,7 +91,7 @@
 					<div class="section-nav">
 						<ul class="section-tab-nav tab-nav" id="myTab">
 							@foreach($_cate_new as $key => $cate_new)
-							<li @if($key == 0) class="active" @endif><a data-toggle="tab" href="#N{{$cate_new->cate_name}}">{{$cate_new->cate_name}}</a></li>
+							<li @if($key == 0) class="active" @endif><a data-toggle="tab" href="#N{{$key}}">{{$cate_new->cate_name}}</a></li>
 							@endforeach
 						</ul>
 					</div>
@@ -105,7 +105,7 @@
 					<div class="products-tabs">
 						<!-- tab -->
 						@foreach($_cate_new as $key=> $cate_new)
-						<div id="N{{$cate_new->cate_name}}" class="tab-pane @if($key == 0) active @endif">
+						<div id="N{{$key}}" class="tab-pane @if($key == 0) active @endif">
 							<div class="products-slick" data-nav="#slick-nav-5{{$key}}">
 								@foreach($_prods_new as $prods_new)
 								@if($cate_new->cate_id == $prods_new->prod_cate)
@@ -222,7 +222,7 @@
 					<div class="section-nav">
 						<ul class="section-tab-nav tab-nav" id="myTab2">
 							@foreach($_cate_best as $key => $cate_best)
-							<li @if($key == 0) class="active" @endif><a data-toggle="tab" href="#B{{$cate_best}}">{{$cate_best}}</a></li>
+							<li @if($key == 0) class="active" @endif><a data-toggle="tab" href="#B{{$key}}">{{$cate_best}}</a></li>
 							@endforeach
 						</ul>
 					</div>
@@ -236,7 +236,7 @@
 					<div class="products-tabs">
 						<!-- tab -->
 						@foreach($_cate_best as $key => $cate_best)
-						<div id="B{{$cate_best}}" class="tab-pane @if($key == 0) active @endif">
+						<div id="B{{$key}}" class="tab-pane @if($key == 0) active @endif">
 							<div class="products-slick" data-nav="#slick-nav-7{{$key}}">
 								@foreach($_prod_best as $prod_best)
 								@if($cate_best == $prod_best->cate_name)

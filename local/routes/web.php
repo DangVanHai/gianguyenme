@@ -46,14 +46,15 @@ Route::group(['namespace'=>'backend'], function(){
 		});
 		Route::group(['prefix'=>'products'], function(){
 			Route::get('/','ProductController@getShowProduct');
+			Route::get('show/{id}','ProductController@getShowDetailProduct');
 			Route::get('del/{id}','ProductController@getDelProduct');
 			Route::group(['prefix'=>'add'], function(){
 				Route::get('/','ProductController@getAddProduct');
 				Route::post('/','ProductController@postAddProduct');
 			});
 			Route::group(['prefix'=>'edit'], function(){
-				Route::get('/','ProductController@getEditProduct');
-				Route::post('/','ProductController@postEditProduct');
+				Route::get('{id}','ProductController@getEditProduct');
+				Route::post('{id}','ProductController@postEditProduct');
 			});
 		});
 	});

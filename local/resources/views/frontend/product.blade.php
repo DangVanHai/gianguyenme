@@ -54,6 +54,11 @@
 					<div class="product-preview">
 						<img src="{{asset('public/images/products/'.$_prods_det->prod_img)}}" alt="{{$_prods_det->prod_img}}">
 					</div>
+					@for($i=1;$i<=3;$i++)
+					<div class="product-preview">
+						<img src="{{asset('public/images/products/images/'.$_prods_det->prod_code.'/'.$i.'-'.$_prods_det->prod_img)}}" alt="{{$i.'-'.$_prods_det->prod_img}}">
+					</div>
+					@endfor
 				</div>
 			</div>
 			<!-- /Product main img -->
@@ -61,9 +66,12 @@
 			<!-- Product thumb imgs -->
 			<div class="col-md-2  col-md-pull-5">
 				<div id="product-imgs">
-					@for($i=1;$i<=5;$i++)
 					<div class="product-preview">
-						<img src="{{asset('public/images/products/images/'.$i.'.png')}}" alt="{{$i}}.png">
+						<img src="{{asset('public/images/products/'.$_prods_det->prod_img)}}" alt="{{$_prods_det->prod_img}}">
+					</div>
+					@for($i=1;$i<=3;$i++)
+					<div class="product-preview">
+						<img src="{{asset('public/images/products/images/'.$_prods_det->prod_code.'/'.$i.'-'.$_prods_det->prod_img)}}" alt="{{$i.'-'.$_prods_det->prod_img}}">
 					</div>
 					@endfor
 				</div>
@@ -123,7 +131,7 @@
 					</div>
 					<ul class="product-links">
 						<li>Danh Mục:</li>
-						<li><a href="#">{{$_prods_det->category->cate_name}}</a></li>
+						<li><a href="{{asset('/'.$_prods_det->category->cate_id.'/'.$_prods_det->category->cate_name.'.html')}}">{{$_prods_det->category->cate_name}}</a></li>
 					</ul>
 
 					<ul class="product-links">
@@ -154,7 +162,7 @@
 						<div id="tab1" class="tab-pane fade in active">
 							<div class="row">
 								<div class="col-md-12">
-									<p>{{$_prods_det->prod_detail}}</p>
+									<p>{!!$_prods_det->prod_detail!!}</p>
 								</div>
 							</div>
 						</div>
