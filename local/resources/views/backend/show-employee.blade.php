@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','Add-users')
+@section('title','View-employees')
 @section('main')
 @section('header')
 <link rel="stylesheet" href="assets/css/normalize.css">
@@ -36,7 +36,6 @@
 	</div>
 </div>
 @include('backend.errors.errors')
-@foreach($show->all() as $employee)
 <div class="content mt-3">
 	<div class="animated fadeIn">
 		<form method="post" >
@@ -47,24 +46,29 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa  fa-male"></i></div>
-								<input type="text" id="full_name" disabled="" name="full_name" value="{{$employee->full_name}}" class="form-control">
+								<input type="text" id="full_name" disabled="" name="full_name" value="{{$show->full_name}}" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-user"></i></div>
-								<input type="text" id="username" disabled="" name="username" value="{{$employee->username}}" class="form-control">
+								<input type="text" id="username" disabled="" name="username" value="{{$show->username}}" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-								<input type="email" id="email" disabled=""  name="email" value="{{$employee->email}}" class="form-control">
+								<input type="email" id="email" disabled=""  name="email" value="{{$show->email}}" class="form-control">
 							</div>
 						</div>
 						<div class="form-actions form-group">
 							<div class="row">
-								<button type="button" name="submit" class="btn btn-outline-danger btn-sm col" ><a href="{{asset('admin/users/edit/'.$employee->user_id)}}">Edit</a></button><button type="button" name="submit" class="btn btn-outline-success btn-sm col" ><a href="{{asset('admin/users/employees')}}">Return</a></button>
+								<div class="col-lg-3">
+									<a href="{{asset('admin/users/edit/'.$show->user_id)}}"><button type="button" name="submit" class="btn btn-outline-danger btn-sm col" >Edit</button></a>
+								</div>
+								<div class="col-lg-3">
+									<a href="{{asset('admin/users/employees')}}"><button type="button" name="submit" class="btn btn-outline-success btn-sm col" >Return</button></a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -76,36 +80,36 @@
 					<div class="card-body card-block">
 						<div class="form-group">
 							<div class="input-group">
-								<input type="text" id="function" disabled="" name="function" value="{{$employee->function}}" class="form-control">
+								<input type="text" id="function" disabled="" name="function" value="{{$show->function}}" class="form-control">
 								<div class="input-group-addon"><i class="fa">Position</i></div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-phone"></i></div>
-								<input type="text" id="phone" disabled="" name="phone" value="{{$employee->phone}}" class="form-control">
+								<input type="text" id="phone" disabled="" name="phone" value="{{$show->phone}}" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-home"></i></div>
-								<input type="text" id="address" disabled="" name="address" value="{{$employee->address1}}" class="form-control">
+								<input type="text" id="address" disabled="" name="address" value="{{$show->address1}}" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa fa-credit-card"></i></div>
-								<input type="text" id="id_card" disabled="" name="id_card" value="{{$employee->id_card}}" class="form-control">
+								<input type="text" id="id_card" disabled="" name="id_card" value="{{$show->id_card}}" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="fa">Avatar</i></div>
-								<span><img id="avatar" class="thumbnail" src="{{asset('public/images/avatar/'.$employee->avatar)}}"></span>
+								<span><img id="avatar" class="thumbnail" src="{{asset('public/images/avatar/'.$show->avatar)}}"></span>
 							</div>
 						</div>
 						<div class="row form-group">
-							<div class="col-12 col-md-12"><textarea disabled="" name="employee_detail" id="textarea-input" rows="3" placeholder="{{$employee->employee_detail}}" class="form-control"></textarea></div>
+							<div class="col-12 col-md-12"><textarea disabled="" name="employee_detail" id="textarea-input" rows="3" placeholder="{{$show->employee_detail}}" class="form-control"></textarea></div>
 						</div>
 					</div>
 				</div>
@@ -113,7 +117,6 @@
 		</form>
 	</div>
 </div>
-@endforeach
 @section('script')
 <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
 <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>

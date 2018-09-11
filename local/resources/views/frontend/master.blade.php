@@ -13,7 +13,7 @@
 	<link type="text/css" rel="stylesheet" href="css/style.css"/>
 
 
-	<title>BKsensor | @yield('title')</title>
+	<title>GN | @yield('title')</title>
 
 	<!-- Google font -->
 
@@ -37,8 +37,8 @@
 			<div class="container">
 				<ul class="header-links pull-left">
 					<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i>49 ThuyLinh HaNoi</a></li>
-					<li><a href="{{asset('lienhe')}}" onClick="alert('phone : 091-87-68-74')"><i class="fa fa-phone"></i>+8491-87-68-74</a></li>
-					<li><a href="{{asset('lienhe')}}" ><i class="fa fa-envelope-o"></i>bksensors@email.com</a></li>
+					<li><a href="tel:+84918-876-874"><i class="fa fa-phone"></i>+84918-876-874</a></li>
+					<li><a href="mailto:bksensors@gmail.com?Subject=Hello%20BKsensor" target="_top"><i class="fa fa-envelope-o"></i>bksensors@gmail.com</a></li>
 				</ul>
 				<ul class="header-links pull-right">
 					<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i> Liên Hệ</a></li>
@@ -75,7 +75,7 @@
 					<div class="col-md-3">
 						<div class="header-logo">
 							<a href="{{asset('/')}}" class="logo">
-								<img src="./img/logo.png" alt="bksensor-logo">
+								<img src="./img/logo-gianguyenme.png" alt="logo-gianguyenme">
 							</a>
 						</div>
 					</div>
@@ -240,8 +240,8 @@
 								<p>BKsensor công ty thương mại chuyên cung cấp các thiết bị công nghệ cao.</p>
 								<ul class="footer-links">
 									<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i>49 ThuyLinh HaNoi</a></li>
-									<li><a href="{{asset('lienhe')}}" onClick="alert('phone : 091-87-68-74')"><i class="fa fa-phone"></i>+8491-87-68-74</a></li>
-									<li><a href="{{asset('lienhe')}}" ><i class="fa fa-envelope-o"></i>bksensors@email.com</a></li>
+									<li><a href="tel:+84918-876-874"><i class="fa fa-phone"></i>+84918-876-874</a></li>
+									<li><a href="mailto:bksensors@gmail.com?Subject=Hello%20BKsensor" target="_top"><i class="fa fa-envelope-o"></i>bksensors@gmail.com</a></li>
 								</ul>
 							</div>
 						</div>

@@ -16,6 +16,7 @@ use Auth;
 use App\model\backend\UserModel;
 use App\Http\Requests\backend\AddUserRequest;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 class FronEndViewController extends Controller
 {
 	public function getBksensor(){
@@ -184,4 +185,19 @@ class FronEndViewController extends Controller
 		$user->save();
 		return back()->withInput()->with('success','bạn đã đăng ký thành công hãy đăng nhập để kiểm tra');
 	}
+	// test pdf email
+	public function getPDF()
+	{
+		return PDF::loadView('frontend/emailtestpdf')->save('public/my_stored_file.pdf')->stream('download.pdf');
+		// $data = ['name' => 'tienduong'];	
+		// $pdf = PDF::loadView('frontend.emailtestpdf',  compact('data'));
+		// return $pdf->download('invoice.pdf');
+	}
+
+	public function getviewPDF()
+	{
+		$data = ['name' => 'tienduong'];
+		return view('frontend.emailtestpdf',$data);
+	}
+
 }

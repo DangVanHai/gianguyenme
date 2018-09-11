@@ -82,6 +82,9 @@ Route::group(['namespace'=>'frontend'], function(){
 		Route::post('payment/guest','CartController@postPayment');
 		Route::get('payment//user/{id}','CartController@getPayment');
 	});
+	Route::get('pdf','FronEndViewController@getPDF');
+	Route::get('viewpdf','FronEndViewController@getviewPDF');
+
 });
 
 	// ++++++++++++++++++++++/end frontend+++++++
