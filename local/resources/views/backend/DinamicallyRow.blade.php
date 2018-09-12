@@ -69,8 +69,19 @@
 			for(var i=0; i<colCount; i++) {
 
 				var newcell	= row.insertCell(i);
-
-				newcell.innerHTML = table.rows[1].cells[i].innerHTML;
+				if (i==0){
+					newcell.innerHTML = table.rows[1].cells[i].innerHTML;//thêm giống hàng 1
+				}
+				if (i==1){
+					newcell.innerHTML = rowCount+i-1;//thêm giống hàng 1
+					newcell.style.WebkitAlignContent = "center";
+				}
+				if(i!=0 && i!=1){
+					var input = document.createElement("input");
+					input.type = "text";
+					input.value = "type in here";
+					newcell.appendChild(input);//thêm giống hàng 1
+				}
 				//alert(newcell.childNodes);
 				switch(newcell.childNodes[0].type) {
 					case "text":

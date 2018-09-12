@@ -56,6 +56,9 @@ Route::group(['namespace'=>'backend'], function(){
 				Route::get('{id}','ProductController@getEditProduct');
 				Route::post('{id}','ProductController@postEditProduct');
 			});
+			Route::get('del/{id}','ProductController@getDelProduct');
+			Route::get('quote','QuoteController@getQuote');
+
 		});
 	});
 });
