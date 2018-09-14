@@ -114,8 +114,6 @@
 						rowCount--;
 						i--;
 					}
-
-
 				}
 			}catch(e) {
 				alert(e);
