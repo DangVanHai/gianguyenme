@@ -74,12 +74,31 @@
 				}
 				if (i==1){
 					newcell.innerHTML = rowCount+i-1;//thêm giống hàng 1
-					newcell.style.WebkitAlignContent = "center";
+					newcell.style.textAlign = "center";
 				}
 				if(i!=0 && i!=1){
 					var input = document.createElement("input");
+					if (i==2) {
 					input.type = "text";
-					input.value = "type in here";
+					input.style.width = "auto";
+					}
+					if (i==3) {
+				// 		 <select class="form-control" id="sel1">
+    // <option>1</option>
+    // <option>2</option>
+    // <option>3</option>
+    // <option>4</option>
+					input.type = "select";
+					input.option = "1";
+					input.option = "2";
+					input.style.width = "50px";
+					}
+					if (i==4) {
+					input.style.width = "50px";
+					}
+					if (i==5) {
+					input.style.width = "50px";
+					}
 					newcell.appendChild(input);//thêm giống hàng 1
 				}
 				//alert(newcell.childNodes);
@@ -144,6 +163,7 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-sm-12">
 			<table class="table">
 				<thead>
 					<tr class="info">
@@ -153,19 +173,48 @@
 				<tbody>
 					<tr>
 						<td>Người gửi / From: Gia Nguyen M&E JSC</td>
-						<td>Người nhận/To:  Phu Hai</td>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">Người nhận/To:</span>
+								<input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+							</div>
+						</td>
 					</tr>  
 					<tr>
 						<td>Ngày tháng /Date:04.07.2018</td>
-						<td>Đại diện/Attn: Mr. Dũng</td>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">Đại diện/Attn:</span>
+								<input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+							</div>
+						</td>
 					</tr>
 					<tr>
-						<td>HP:'0915505105-hien.gianguyen.me@gmail.com</td>
-						<td>ĐT/HP:</td>
+						<td>HP: (+84)915-505-105</td>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">ĐT/HP:</span>
+								<input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+							</div>
+						</td>
+					</tr> 
+					<tr>
+						<td>Email: hien.gianguyen.me@gmail.com</td>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">Email:</span>
+								<input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+							</div>
+						</td>
 					</tr> 
 					<tr>
 						<td>Số/No:  04072018PH/GN</td>
-						<td>Dự án /Project: </td>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">Dự án /Project: </span>
+								<input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+							</div>
+						</td>
 					</tr>  
 					<tr>
 						<td colspan= "2" style=" text-transform: uppercase;">Chi tiết bao giá ( Detailed quotes )</td>
@@ -173,10 +222,14 @@
 				</tbody>
 			</table>
 		</div>
+		</div>
 		<div class="row">
+			<div class="col-sm-12">
+
 			<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />
 
 			<INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable')" />
+			<button style="float: right;" type="submit" class="btn btn-success">Xem Trước</button>
 			<table id="dataTable" class="table table-bordered table-striped">
 				<thead>
 					<tr style=" text-transform: uppercase;" class="info">
@@ -216,7 +269,10 @@
 				</tbody>
 			</table>
 		</div>
+		</div>
 		<div class="row">
+			<div class="col-sm-12">
+
 			<div class="alert alert-warning">
 				<b style=" text-transform: uppercase;">Ghi chú ( Note ):</b>
 				<p><strong>Thời gian giao hàng ( Delivery time ): </strong>Giao hàng trong vòng 2-5 ngày kể từ khi nhận được xác nhận đặt hàng và tiền tạm ứng
@@ -233,7 +289,10 @@
 				<p><strong>Hiệu lực báo giá ( Validity ): </strong>Báo giá có giá trị trong vòng 30 ngày ( Quotation valids to 30 day for the amount quoted ).</p>
 			</div>
 		</div>
+		</div>
 		<div class="row">
+			<div class="col-sm-12">
+
 			<div class="panel panel-default">
 				<div class="panel-heading"><p style=" text-transform: uppercase;text-align: center; font-weight: bold;">Ký xác nhận báo giá</p></div>
 				<div class="col-sm-6 panel-body">GIA NGUYEN M&E JSC
@@ -243,6 +302,7 @@
 				<div class="col-sm-6 panel-body">THE CUSTOMER 
 				( Signed order confirmation)</div>
 			</div>
+		</div>
 		</div>
 	</div>
 </body>
