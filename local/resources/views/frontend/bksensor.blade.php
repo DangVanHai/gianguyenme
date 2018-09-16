@@ -36,8 +36,8 @@
 						<img src="./img/news.png" alt="BKsensor new">
 					</div>
 					<div class="shop-body">
-						<h3>Bảng Tin<br>Công Nghệ SmartHome</h3>
-						<a href="#" class="cta-btn">Đi Tới <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>Sản Phẩm<br>Cao Cấp Nhất</h3>
+						<a class="cta-btn">Nhập khẩu <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -50,8 +50,8 @@
 						<img src="./img/project.png" alt=" project smart home">
 					</div>
 					<div class="shop-body">
-						<h3>Dự Án<br> Của BKsensor</h3>
-						<a href="#" class="cta-btn">Đi Tới <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>GNME<br>Giao Hàng Nhanh Nhất</h3>
+						<a class="cta-btn">24/7 <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -64,8 +64,8 @@
 						<img src="./img/collect.png" alt="sensor Smart home">
 					</div>
 					<div class="shop-body">
-						<h3>Smart Home<br>Bộ sưu tập</h3>
-						<a href="#" class="cta-btn">Đi Tới <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>Đội Ngũ<br>Hỗ Trơ Nhiệt Tình</h3>
+						<a class="cta-btn">24/7 <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -173,31 +173,31 @@
 					<ul class="hot-deal-countdown">
 						<li>
 							<div>
-								<h3>02</h3>
-								<span>Days</span>
+								<h3>64</h3>
+								<span>Tỉnh Thành</span>
+							</div>
+						</li>
+						<li>
+							<div>
+								<h3>30</h3>
+								<span>Nhân Viên</span>
 							</div>
 						</li>
 						<li>
 							<div>
 								<h3>10</h3>
-								<span>Hours</span>
+								<span>Năm Kinh Nghiệm</span>
 							</div>
 						</li>
 						<li>
 							<div>
-								<h3>34</h3>
-								<span>Mins</span>
-							</div>
-						</li>
-						<li>
-							<div>
-								<h3>60</h3>
-								<span>Secs</span>
+								<h3>24/7</h3>
+								<span>Support</span>
 							</div>
 						</li>
 					</ul>
-					<h2 class="text-uppercase">hot deal this week</h2>
-					<p>New Collection Up to 50% OFF</p>
+					<h2 class="text-uppercase">Nhưng Thông hot nhất về chúng tôi</h2>
+					<p>Đấu thầu các dự án lớn trong và ngoài nước</p>
 					<a class="primary-btn cta-btn" href="#">Xem Ngay</a>
 				</div>
 			</div>

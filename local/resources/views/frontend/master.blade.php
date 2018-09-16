@@ -36,9 +36,9 @@
 		<div id="top-header">
 			<div class="container">
 				<ul class="header-links pull-left">
-					<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i>49 ThuyLinh HaNoi</a></li>
-					<li><a href="tel:+84918-876-874"><i class="fa fa-phone"></i>+84918-876-874</a></li>
-					<li><a href="mailto:bksensors@gmail.com?Subject=Hello%20BKsensor" target="_top"><i class="fa fa-envelope-o"></i>bksensors@gmail.com</a></li>
+					<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i>89A/49 ThuyLinh HaNoi</a></li>
+					<li><a href="tel:+84915505105"><i class="fa fa-phone"></i>+84915-505-105</a></li>
+					<li><a href="mailto:hien.gianguyen.me@gmail.com?Subject=Hello%20GNME" target="_top"><i class="fa fa-envelope-o"></i>hien.gianguyen.me@gmail.com</a></li>
 				</ul>
 				<ul class="header-links pull-right">
 					<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i> Liên Hệ</a></li>
@@ -237,11 +237,11 @@
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">About Us</h3>
-								<p>BKsensor công ty thương mại chuyên cung cấp các thiết bị công nghệ cao.</p>
+								<p>GNME công ty thương mại chuyên cung cấp các thiết bị công nghệ cao.</p>
 								<ul class="footer-links">
-									<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i>49 ThuyLinh HaNoi</a></li>
-									<li><a href="tel:+84918-876-874"><i class="fa fa-phone"></i>+84918-876-874</a></li>
-									<li><a href="mailto:bksensors@gmail.com?Subject=Hello%20BKsensor" target="_top"><i class="fa fa-envelope-o"></i>bksensors@gmail.com</a></li>
+									<li><a href="{{asset('lienhe')}}"><i class="fa fa-map-marker"></i>89A/49 ThuyLinh HaNoi</a></li>
+									<li><a href="tel:+84915505105"><i class="fa fa-phone"></i>+84915-505-105</a></li>
+									<li><a href="mailto:hien.gianguyen.me@gmail.com?Subject=Hello%20GNME" target="_top"><i class="fa fa-envelope-o"></i>hien.gianguyen.me@gmail.com</a></li>
 								</ul>
 							</div>
 						</div>
