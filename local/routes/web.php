@@ -60,6 +60,16 @@ Route::group(['namespace'=>'backend'], function(){
 			Route::get('quote','QuoteController@getQuote');
 
 		});
+		Route::group(['prefix'=>'news'], function(){
+			Route::get('/','ProductController@getShowProduct');
+			Route::get('show/{id}','ProductController@getShowDetailProduct');
+			Route::get('del/{id}','ProductController@getDelProduct');
+			Route::group(['prefix'=>'add'], function(){
+				Route::get('/','ProductController@getAddProduct');
+				Route::post('/','ProductController@postAddProduct');
+			});
+			
+		});
 	});
 });
 	// ++++++++++++++++++++++/end backend+++++++
