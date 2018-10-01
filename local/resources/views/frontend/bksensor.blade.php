@@ -196,9 +196,9 @@
 							</div>
 						</li>
 					</ul>
-					<h2 class="text-uppercase">Nhưng Thông Tin Hot Nhất</h2>
+					<h2 class="text-uppercase">Nhưng Thông hot nhất về chúng tôi</h2>
 					<p>Đấu thầu các dự án lớn trong và ngoài nước</p>
-					<a class="primary-btn cta-btn" >Xem Ngay</a>
+					<a class="primary-btn cta-btn" href="#">Xem Ngay</a>
 				</div>
 			</div>
 		</div>

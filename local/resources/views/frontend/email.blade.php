@@ -45,7 +45,7 @@ p.info{
 		<h3>Thông tin Người gửi</h3>
 		<p>
 			<span class="info">Người gửi / From: </span>
-			BKsensor M&E JSC
+			GNME M&E JSC
 		</p>
 		<p>
 			<span class="info">Ngày tháng /Date: </span>
@@ -53,22 +53,21 @@ p.info{
 		</p>
 		<p>
 			<span class="info">Email: </span>
-			bksensors@gmail.com
+			hien.gianguyen.me@gmail.com
 		</p>
 		<p>
 			<span class="info">Điện thoại: </span>
-			0918 876 874
+			0915 505 105
 		</p>
 		<p>
 			<span class="info">Địa chỉ: </span>
-			49 ThuyLinh HaNoi
+			89A/49 ThuyLinh HaNoi
 		</p>
 		<p>
 			<span class="info">Số/No:</span>
-			{{$codeQuote}}		
+			GN/{{$codeQuote}}		
 		</p>
 	</div>
-	@if(!Auth::check())
 	<div id="khach-hang">
 		<h3>Thông tin khách hàng</h3>
 		<p>
@@ -94,33 +93,6 @@ p.info{
 			{{$info['address']}}
 		</p>
 	</div>
-	@else
-	<div id="khach-hang">
-		<h3>Thông tin khách hàng</h3>
-		<p>
-			<span class="info">Khách hàng: </span>
-			{{$userInfo->full_name}}
-		</p>
-		@if($userInfo->company== 1)
-		<p>
-			<span class="info">MST: </span>
-			{{$userInfo->company_id}}
-		</p>
-		@endif
-		<p>
-			<span class="info">Email: </span>
-			{{$userInfo->email}}
-		</p>
-		<p>
-			<span class="info">Điện thoại: </span>
-			{{$userInfo->phone}}
-		</p>
-		<p>
-			<span class="info">Địa chỉ: </span>
-			{{$userInfo->address1}}
-		</p>
-	</div>
-	@endif
 	
 	<div id="hoa-don">
 		<h3>Hóa Đơn Mua Hàng</h3>	
@@ -142,7 +114,7 @@ p.info{
 					<td  ALIGN="CENTER">
 						<p>{{$stt++}}</p>
 					</td>
-					<td  ALIGN="CENTER"><img alt="{{$slide->name}}" style="width: 100px; height: 100px;" src="{{asset('local/public/images/products/'.$slide->options->image)}}"></td>
+					<td  ALIGN="CENTER"><img alt="{{$slide->name}}" style="width: 100px; height: 100px;" src="{{asset('public/images/products/'.$slide->options->image_email)}}"></td>
 					<td >{{$slide->name}}</td>
 					<td  ALIGN="CENTER">{{$slide->qty}}</td>
 					<td >{{number_format($slide->price,0,',','.')}}  đ</td>

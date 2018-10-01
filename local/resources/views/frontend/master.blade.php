@@ -132,10 +132,13 @@
 		<div class="container">
 			<div class="row">
 				<!-- responsive-nav -->
-				<div id="responsive-nav" class=" col-md-7 menu">
+				<div id="responsive-nav" class=" col-md-7 menu" style="bottom=7px;">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav" style="height: 67px;">
 						<li><a href="{{asset('/')}}">Trang Chủ</a></li>
+						<li><a href="{{asset('/')}}">Dịch vụ kỹ thuật</a></li>
+						<li><a href="{{asset('baohanh-dieukhoan')}}">bảo hành</a></li>
+						<li><a href="{{asset('/')}}">thị trường</a></li>
 						@foreach($cate_parents as $cate_parent)
 						<li><a href="{{asset('/'.$cate_parent->cate_id.'/'.$cate_parent->cate_name.'.html')}}">{{$cate_parent->cate_name}}</a>
 							@if($cate_parent->cate_main =="parents")
